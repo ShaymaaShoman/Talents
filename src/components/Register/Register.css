@@ -1,0 +1,193 @@
+.sign-container{
+    max-width: 703px;
+    min-height: 948px;
+    margin: auto; 
+    justify-content: flex-start;
+    flex-direction: column;
+    font-weight: Semibold;
+    font-family: "Segoe UI", Arial, sans-serif; 
+    margin-top: 20px;
+    
+  }
+.sign{
+     background: #FFFFFF;
+    border-radius: 10px;
+max-width: 340px;
+    margin: 0 auto 100px;
+    padding: 0px 50px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.sign{
+font-size: 12px;
+text-transform: capitalize;
+font-weight: Semibold;
+}
+.sign-container h4{
+font-size: 14px;
+word-spacing: 1px;
+}
+.sign .fulName{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;  
+}
+
+
+.sign #Last{
+    margin-left: 30px;
+
+}
+.sign .input_field label{
+   margin-top: 20px;
+   font-size: 12px; 
+   color: #707070;
+}
+.sign .input{
+    display: flex;
+    width: 100%;  
+    display: inline-block; 
+}
+.sign #FirstName{
+width: 50%;
+}
+.sign #LastName{
+    width: 50%;
+    margin-left: 30px;
+
+}
+.sign .fulName input{
+    font-size: 10px;
+    padding: 1rem;
+    width: 50%;
+}
+.FirstName{
+    width: 50%;
+
+}
+.sign .LastName{
+    width: 50%;
+    margin-left: 50px;
+   
+}
+.sign form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding-bottom: 1rem;
+    position: relative;
+}
+.sign input[type="text"]{
+    text-align: left;
+    padding: 8px 30px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 1px solid  rgb(175, 172, 172);
+    position: relative;
+    justify-content: space-between;
+    margin-top: 10px;
+    
+    
+}
+
+.sign .Hide1{
+    position: absolute;
+    top: 38%;
+    right: 1%;
+    cursor: pointer;
+    color: lightgray;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+
+}
+.sign input[type="text"]::placeholder{
+    text-align: left;
+    margin-left: -20px;
+    position: absolute;
+}
+.sign input[type="email"],
+.sign input[type="password"],
+.sign select,
+.sign button
+ {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  padding: .57rem;
+  border-radius: 5px;
+  border: 1px solid  rgb(175, 172, 172);
+  margin-top: -5px;
+}
+.sign label {font-weight: bold;margin-bottom: .5rem;color:#707070;}
+.sign label,
+.sign button {
+  margin-top: 5px;
+}
+.sign .AlreadyAcouunt{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    text-decoration: none;
+   
+}
+.sign .AlreadyAcouunt span {
+    color:#4375ff;
+    cursor: pointer;
+    text-decoration: none;
+}
+.signLink{
+    color:#4375ff;
+    cursor: pointer;
+    text-decoration: none;
+}
+.sign .signup1{
+    background-color:#4375FF;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 340px;
+    margin-top: 40px;
+}
+/* .privecy1{
+    display: flex;
+    position: absolute;
+}
+.service1{
+    cursor: pointer;
+    color: #262727;
+    position: absolute;
+  left: auto;
+} */
+/* .log{
+    box-shadow:  0 0 0 2px #e3e8ee;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 420px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: rgb(255, 255, 255); 
+   justify-content: center;
+
+
+}
+
+
+ */
+ select{
+    color: #707070;
+ }
+ .sign form  #eye{
+
+    position: absolute;
+    top: 43%;
+    right: 5%;
+    cursor: pointer;
+    color: lightgray;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    
+    }

@@ -1,0 +1,26 @@
+.Card-wrapp{
+    background-color: #F3F4F6;
+    display: flex;
+    position: relative;
+    border-radius: 5px;
+  }
+  .Card-wrapp h6{
+font-size: 14px;
+letter-spacing: 1px;
+margin-left: 15px;
+  }
+  .Card-wrapp p{
+   margin-top: -30px;
+   border-color: #707070;
+   margin-left: 15px;
+      }
+      .Card-wrapp button{
+        position: absolute; right: 8px;
+        margin-top: 40px;
+        color: #fff;
+        background-color: #4375FF;
+        width: 100px;
+        height: 25px;
+        border: 1px solid #E2E2E2;
+        border-radius: 5px;
+           }

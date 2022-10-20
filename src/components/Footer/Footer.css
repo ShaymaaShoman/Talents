@@ -1,0 +1,19 @@
+.privecy{
+    display: flex;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+   
+  }
+  .service{
+ 
+    cursor: pointer;
+    color: #262727;
+    margin-left: 70px;
+    padding: -15px;
+    
+    
+   
+  }
