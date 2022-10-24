@@ -1,20 +1,20 @@
 .sign-container{
     max-width: 703px;
-    min-height: 948px;
+height: 748px;
     margin: auto; 
     justify-content: flex-start;
     flex-direction: column;
     font-weight: Semibold;
     font-family: "Segoe UI", Arial, sans-serif; 
-    margin-top: 20px;
-    
+  margin-top: 3px;
+  padding: 2% 0 0; 
   }
 .sign{
      background: #FFFFFF;
     border-radius: 10px;
 max-width: 340px;
     margin: 0 auto 100px;
-    padding: 0px 50px;
+    padding: 0px 70px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .sign{
@@ -74,49 +74,55 @@ width: 50%;
     flex-direction: column;
     justify-content: space-evenly;
     flex-grow: 1;
-    padding-bottom: 1rem;
+
     position: relative;
 }
 .sign input[type="text"]{
     text-align: left;
-    padding: 8px 30px;
+    padding: 3px 30px;
     font-size: 12px;
     border-radius: 5px;
     border: 1px solid  rgb(175, 172, 172);
     position: relative;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 5px;
     
     
 }
 
-.sign .Hide1{
+
+.sign #eye1{
     position: absolute;
     top: 38%;
-    right: 1%;
+    right: 5%;
     cursor: pointer;
     color: lightgray;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
 
 }
 .sign input[type="text"]::placeholder{
     text-align: left;
     margin-left: -20px;
     position: absolute;
+    margin-top: 10px;
+}
+.sign input[type="email"]::placeholder{
+    padding-left: 10px;
 }
 .sign input[type="email"],
 .sign input[type="password"],
+.sign input[type="tel"],
 .sign select,
 .sign button
  {
   font-family: 'Nunito', sans-serif;
   font-size: 12px;
-  padding: .57rem;
+  padding: .30px;
   border-radius: 5px;
   border: 1px solid  rgb(175, 172, 172);
-  margin-top: -5px;
+  margin-top: -10px;
 }
 .sign label {font-weight: bold;margin-bottom: .5rem;color:#707070;}
 .sign label,
@@ -125,9 +131,10 @@ width: 50%;
 }
 .sign .AlreadyAcouunt{
     text-align: center;
-    margin-top: 20px;
+    margin-top: 12px;
     font-size: 12px;
     text-decoration: none;
+    margin-bottom: 20px;
    
 }
 .sign .AlreadyAcouunt span {
@@ -147,47 +154,51 @@ width: 50%;
     font-size: 16px;
     font-weight: bold;
     width: 340px;
-    margin-top: 40px;
+    height: 40px;
+    margin-top: 35px;
 }
-/* .privecy1{
-    display: flex;
-    position: absolute;
+.sign .signup1 p{
+    color: #fff;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+.text-danger{
+    color :red;
 }
-.service1{
-    cursor: pointer;
-    color: #262727;
-    position: absolute;
-  left: auto;
-} */
-/* .log{
-    box-shadow:  0 0 0 2px #e3e8ee;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 420px;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background-color: rgb(255, 255, 255); 
-   justify-content: center;
-
-
-}
-
-
- */
- select{
+.invalid {
+    border:1px solid red !important;
+   }
+   select{
     color: #707070;
- }
- .sign form  #eye{
-
+   }
+ 
+   .react-tel-input .form-control {
+    width: 340px !important; 
+    height: 40px !important;
+   }
+   /* .PhoneInput{
+  
+   }
+   .PhoneInputCountrySelect{
+    margin-left: 100px;
     position: absolute;
-    top: 43%;
-    right: 5%;
-    cursor: pointer;
-    color: lightgray;
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
-    
-    }
+   }
+  .PhoneInputCountryIcon{
+
+  }
+.PhoneInputCountrySelectArrow{
+
+}
+.PhoneInputCountrySelect{
+margin-left: 10px;
+opacity: -1;
+}
+#phone{
+    position: relative;
+} */
+.form-control{
+    width: 340px;
+    height: 30px;
+}
+.sign select{
+    height: 40px;}

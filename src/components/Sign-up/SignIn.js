@@ -1,149 +1,191 @@
-import React, { useEffect } from "react";
-import "./Sign-up.css";
-import { FaEyeSlash } from "react-icons/fa";
-import { FaEye } from "react-icons/fa";
+import React, { useRef,useEffect , useContext} from "react";
+import axios from "axios";
+// import { FaEyeSlash } from "react-icons/fa";
+// import { FaEye } from "react-icons/fa";
+import { AiFillWarning } from "react-icons/ai";
 import { useState } from "react";
 import Footer from "../Footer/Footer";
 import Brand from "../Brand/Brand";
-import { Link } from "react-router-dom";
-import UseForm from "../UseForm/UseForm";
+import { Link,Navigate  } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import Home from "../HomePage/Home";
-import Validtion from "../UseForm/Validtion";
-// import  useHistory  from "react-router-dom"
+import './Sign-up.css'
+import PasswordForm from "../Password/PasswordForm";
+
+import AuthContext from "../context/AuthProvider";
+import { LoginContainer ,LoginSection,Heading,FormStyle,InputEmailStyle ,DangerStyle,InputStyle,LabelStyle,DAcount ,ALinks ,ButtonStyle,ForgetPassword,ButtonPargStyle} from "./StyleSignup";
 const SignIn = () => {
-  // const history = useHistory();
-  const { handleSubmit, handleChange, values, errors } = UseForm(Validtion);
-  const { email, password } = values;
-  const [show, setShow] = useState(true);
+  const { setAuth } = useContext(AuthContext);
+  const [errMsg, setErrMsg] = useState('');
+  const [success, setSuccess] = useState(false);
+  const errRef = useRef();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+    reset,
+    trigger,
+  } = useForm();
+  const{getActiveColor,hidePassword, handlePassword,message ,setHidePassword,setMessage,}=PasswordForm();
+  const [password,setPassword]=useState('');
+  const [email, setEmail] = useState("");;
+  
+  const onSubmit = async (e,data) => {
+//     // reset(); //clear value
+//     const USER_API_URL = "https://talents-valley.herokuapp.com/api/user/login";
+//     const formData = new FormData();
+// formData.append("email", "heba.test@gmail.com");
+// formData.append("password", "Alex Banks");
+// try {
+//   const response = await axios.post(USER_API_URL,
+//       JSON.stringify({ email, password }),
+//       {
+//           headers: { 'Content-Type': 'application/json' },
+//           withCredentials: true
+//       }
+//   );
+//   console.log(JSON.stringify(response?.data));
+//   //console.log(JSON.stringify(response));
+//   const accessToken = response?.data?.accessToken;
+//   const roles = response?.data?.roles;
+//   setAuth({email, password, roles, accessToken });
+//   setPassword('');
+//   setEmail('');
+//   setSuccess(true);
+// } catch (err) {
+//   if (!err?.response) {
+//       setErrMsg('No Server Response');
+//   } else if (err.response?.status === 400) {
+//       setErrMsg('Missing Username or Password');
+//   } else if (err.response?.status === 401) {
+//       setErrMsg('Unauthorized');
+//   } else {
+//       setErrMsg('Login Failed');
+//   }
+//   errRef.current.focus();
+// }
 
-  useEffect(() => {
-    // if(email&&password==0){
-    //   alert("invalid data");
-    // }else{
-    //  alert("user Login sucssed" );
+   }
 
-    // }
-   localStorage.getItem("user-info");
-
-    
-    // history.push("/Home");
-  }, [values]);
-  // if(email&password){
-  //   setShow(!show)
-  // }
-  //async await add
-  async function loginTest() {
-    console.warn(email, password);
-    let item = { email, password };
-   
-    const USER_API_URL = "https://talents-valley.herokuapp.com/api/user/login";
-    return fetch(USER_API_URL, {
-      body: JSON.stringify(item.json()),
-        headers : {
-            'Content-Type' : 'application/json'
-        },
-        method : "POST",
-        'credentials': 'include'
-    }).then(response => {
-        console.log(response);
-         response.json();
-         if(response.status === 200){
-          console.log("SUCCESSS")
-          return response.json();     
-      }else if(response.status === 408){
-          console.log("SOMETHING WENT WRONG")
-          this.setState({ requestFailed: true })
-      }
-        localStorage.setItem("user-info", JSON.stringify(response));
-    }).catch(function (error) {
-      if (error.response.status === 401) {
-        throw error;
-      }  
-    });
-
-  }
   
   return (
     <>
-      <div id="error"></div>
-      {show ? (
-        <div className="Login-container">
-          <section className="login">
+    <LoginContainer>
+     
+          <LoginSection>
             <Brand />
-            <h4>Login To Your Account</h4>
-            <form onSubmit={handleSubmit} className="login-form">
+            <Heading>Login To Your Account</Heading>
+            
+    
+         <FormStyle onSubmit={handleSubmit(onSubmit)}>
               <>
-                <label htmlFor="email">Email</label>
-                <input
+       
+                <LabelStyle  htmlFor="email">Email</LabelStyle>
+                
+                <InputStyle
                   type="email"
                   id="email"
                   name="email"
-                  value={values.email || ""}
-                  onChange={handleChange}
                   placeholder="email@gmail.com"
-               
-                />
-                {errors.email && (
-                  <span
-                    className="invalid"
-                    style={{
-                      color: " red",
-                    }}
-                  >
-                    {errors.email}
-                  </span>
-                )}
-              </>
+                  {...register("email", { required: "Incorrect email" , 
+                  pattern: {
+                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                   message: "Incorrect email address",
+                   }} )}
+                   onKeyUp={() => {
+                     trigger("email");
+                   }}
+                   className={`form-control ${errors.email && "invalid"}`}
+               />
+               {errors.email && (
+                 <DangerStyle ><AiFillWarning/> {errors.email.message}</DangerStyle>
+               )}
+          
               <>
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
+                <LabelStyle  htmlFor="password">Password</LabelStyle>
+                <InputStyle
+                
+                  type= {hidePassword ? "password" : "text"}
                   id="password"
                   name="password"
-                  value={values.password}
-                  onChange={handleChange}
-             
-                />
-                {errors.password && (
-                  <span
-                    className="invalid"
-                    style={{
-                      color: " red",
-                    }}
-                  >
-                    {errors.password}
-                  </span>
-                )}
+                  {...register("password",{
+                    required:  "Incorrect password",
+                    min: {
+                      value: 6,
+                      message: "Minimum Required age is 6",
+                    },
+                    max: {
+                      value: 10,
+                      message: "Maximum allowed age is 10",
+                    },
+                    // pattern: {
+                    //   value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%])/i,
+                    //   message: "Incorrect password",
+                    // }
+                   
+                   } )}
+                   onKeyUp={() => {
+                  trigger("password");// underline red
+                }}
+                 className={`form-control ${errors.password && "invalid"}`}
+                 onChange={({ target }) => {
+                  handlePassword(target.value);
+                }}
+              />
+              {errors.password && (
+                <DangerStyle  ><AiFillWarning/>{errors.password.message}</DangerStyle>
+              )}
               </>
-              {password ? <FaEye id="eye" /> : <FaEyeSlash id="eye" />}
-
+              <ALinks
+              href="#"
+              className="toggle-btn"
+              onClick={() => {
+                setHidePassword(!hidePassword);
+              }}
+            >
+              <span
+               
+                style={{ color: !hidePassword ? "#FF0054" : "#c3c3c3" }}
+              >
+               
+              </span>
+            </ALinks>
+          
+            {password.length !== 0 ? (
+              <p  style={{ color: getActiveColor(message) }}>
+                Your password is {message}
+              </p>
+            ) : null}
               <Link to="/Recovery">
-                <p className="forget">
-                  <a>Forget Password?</a>
-                </p>
+                <ForgetPassword>
+                  Forget Password?
+                </ForgetPassword>
               </Link>
 
-              <button className="Loginbtn" type="submit" onClick={loginTest}>
+              <ButtonStyle  type="submit">
              
-                <Link to="/"><p >Sign in</p></Link>
-              </button>
+                <Link to="/"><ButtonPargStyle >Sign in</ButtonPargStyle></Link>
+              </ButtonStyle>
 
-              <p className="DAcount">
+              <DAcount>
                 Dont have an account?{" "}
                 <Link to="/Register">
-                  <a href="#" className="signLink">
+                  <ALinks href="#" >
                     &nbsp;Sig up
-                  </a>
+                  </ALinks>
                 </Link>{" "}
-              </p>
-            </form>
-          </section>
-        </div>
-      ) : (
-        <Home />
-      )}
+              </DAcount>
+            </>
+            </FormStyle>  
+          </LoginSection>
+          </LoginContainer>
+   
       <Footer />
     </>
+
+     
+  
   );
 };
 

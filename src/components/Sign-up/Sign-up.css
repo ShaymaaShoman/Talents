@@ -1,64 +1,6 @@
-.login-form span{
-  color: red;
-}
-.Login-container {
-    max-width: 703px;
-    min-height: 821px;
-    padding: 8% 0 0;
-    margin: auto; 
-    justify-content: flex-start;
-    flex-direction: column;
-    margin-top: -40px;
-   
-    
-  }
-  .login {
-    background: #FFFFFF;
-    border-radius: 10px;
-    max-width: 340px;
-    margin: 0 auto 100px;
-    padding: 20px 40px;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  }
-  .container  .login {
-    margin-top: -31px;
-  margin-bottom: 26px;
-  }
 
-   .login h4{
-margin-top: 30px;
-font-size: 12px;
-font-weight: Semibold;
-font-family:  "Segoe UI";
-text-transform: capitalize;
-   }
-   .login-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-grow: 1;
-    padding-bottom: 1rem;
-    margin-top: -10px;
-    position: relative;
-}
-
-.login-form  input[type="email"],
-.login-form input[type="password"],
-.login-form button
- {
-  
-  font-family: 'Segoe UI';
-  padding: .57rem;
-  border-radius: 5px;
-  border: 1px solid  rgb(175, 172, 172);
-  margin-top: 5px;
-}
-.login-form label { font-weight: Semibold;font-size: 12px;color:#707070; border: #707070;  }
-.login-form label,
-.login-form button {
-  margin-top: 1rem;
-}
-#password{
+ 
+/* #password{
     position: relative;
     
 }
@@ -79,75 +21,16 @@ width: 20px;
 height: 20px;
 font-size: 12px;
 
-}
+} */
  
-.signLink{
-    color:#4375ff;
-    cursor: pointer;
 
-}
-.login-form .Loginbtn{
-    background-color:#4375FF;
-    cursor: pointer;
-    font-weight: bold;
-    width: 340px;
-    height: 40px;
-}
-.login-form .Loginbtn p{
-  color: #fff;
-  margin-top: 1px;
-  font-size: 16px;
-}
-.forget{
-    text-align: right;
-    cursor: pointer;
-    color:  #666;
-    font-size: 12px;
-    
-}
-.DAcount{
-    text-align: center;
-    margin-top: 2.5rem;
-    color:  #666;
-    font-size: 12px;
-}
-.login-form  a{
-text-decoration: none;
+.text-danger{
+  color :red;
+  font-size: 12px;
+  
 }
 
-/*  
-.sign{
-    color:#4375ff;
-    cursor: pointer;
-
-}
-.Login{
-    background-color: #4375ff;
-    color: #fff;
-    cursor: pointer;
-}
-a:hover, a:active {
-    text-decoration: underline;
-} */ 
-.invalid{
+ .invalid{
   border: 1px solid #F50000;
   font-size: 12px;
 }
-input + span {
-  position: relative;
-}
-
-input + span::before {
-  position: absolute;
-  right: -20px;
-  top: 5px;
-}
-
-
-
-input:invalid + span::before {
-  content: "✖";
-  color: red;
-  font-size: 12px;
-}
-

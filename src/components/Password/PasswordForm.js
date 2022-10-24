@@ -1,46 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 
-class PasswordForm extends React.Component {
-    constructor(props) {
-    super(props);
+// // validation function
+// export const validatePassword = (value) => {
+//     if ( !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/.test(value)) {
+//       return 'Your password is  weak'+"#FF0054";
+//     } else if (
+//         /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/.test(value)
+//     ) {
+//       return 'Nice Work. This is excellent password '+"#8BC926";
+//     }
+//     return true;
+//   };
 
-    this.state = {value: ''};
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    }
+const PasswordForm = () => {
+    const [password,setPassword]=useState('');
+const [hidePassword, setHidePassword] = useState(true);
+  const [message, setMessage] = useState("");
+  const handlePassword = (passwordValue) => {
+    const strengthChecks = {
+      length: 0,
+      hasUpperCase: false,
+      hasLowerCase: false,
+      hasDigit: false,
+      hasSpecialChar: false,
+    };
 
-    handleChange(event) {
-        this.setState({
-            value: event.target.value
-        });
-    }
+    strengthChecks.length = passwordValue.length >= 10 ? true : false;
+    strengthChecks.hasUpperCase = /[A-Z]+/.test(passwordValue);
+    strengthChecks.hasLowerCase = /[a-z]+/.test(passwordValue);
+    strengthChecks.hasDigit = /[0-9]+/.test(passwordValue);
+    strengthChecks.hasSpecialChar = /[^A-Za-z0-9]+/.test(passwordValue);
 
-    handleSubmit(event) {
-        event.preventDefault();
+    let verifiedList = Object.values(strengthChecks).filter((value) => value);
 
-        const { value } = this.state;
-        const re = new RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$");
-        const isOk = re.test(value);
+    let strength =
+      verifiedList.length == 5
+        ? "Strong"
+        : verifiedList.length >= 2
+        ? "Weak"
+        : "Weak";
 
-        console.log(isOk);
+    setPassword(passwordValue);
+    setMessage(strength);
 
-        if(!isOk) {
-            return alert('weak!');
-        }
+    console.log("verifiedList: ", `${(verifiedList.length / 5) * 100}%`);
+  };
 
-        alert('A password was submitted that was ' + value.length + ' characters long.');
-    }
-
-     render() {
-         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Password:&nbsp;
-                    <input type="password" value={this.state.value} onChange={this.handleChange} />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
-        );
-    }
+  const getActiveColor = (type) => {
+    if (type === "Strong") return "#8BC926";
+   
+    return "#FF0054";
+  };
+  return { getActiveColor,hidePassword, handlePassword,message ,setHidePassword,setMessage};
 }
+
+export default PasswordForm;

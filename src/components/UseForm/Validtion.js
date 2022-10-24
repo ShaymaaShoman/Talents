@@ -25,31 +25,10 @@ const Validtion = (values) => {
     errors.password="Inncorrect password ";
  }else if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,10}$/i.test(values.password)){
    correct.password ="correct  password";
- }else if(values.password.length<=8){
-   errors.password ="password shoud be more than 8";
+
  }
-
-      // if( !/^(?=.*[a-z])/.test(values.password))
-      //          return errors.password = "password must include lowercase letter" ;
-      //     if(!/^(?=.*[A-Z])/.test(values.password)) 
-      //       return errors.password  = "password must include uppercase letter" ;
-      //     if(!/^(?=.*[0-9])/.test(values.password)) 
-      //       return errors.password ="password must include digit";
-      //    if(!/^(?=.*[!@#\$%\^&\*])/.test(values.password))
-      //       return errors.password = "password must include special character" ;
-              
-       
-
-
    
-//  }else if (values.isStrongPassword(values, {
-//     minLength: 8, minLowercase: 1,
-//     minUppercase: 1, minNumbers: 1, minSymbols: 1
-//   })) {
-//       setErrors('Is Strong Password');
-//   } else {
-//       setErrors('Is Not Strong Password');
-//   }
+
 
 if(!values.ConfirmPassword){
     errors.ConfirmPassword ="Incorrect  password";

@@ -1,18 +1,26 @@
 .Recovery-container{
     max-width: 703px;
     min-height: 821px;
-    padding: 6% 0 0;
+    padding: 7% 0 0;
     margin: auto; 
     justify-content: flex-start;
     flex-direction: column;
     margin-top: -40px;
     
   }
+  .Recovery1{
+    background: #FFFFFF;
+    border-radius: 10px;
+    max-width: 380px;
+    margin: 0 auto 100px;
+    padding: 30px 40px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
+  }
 .Recovery{
     background: #FFFFFF;
     border-radius: 10px;
-    max-width: 360px;
+    max-width: 340px;
     margin: 0 auto 100px;
     padding: 40px 40px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -27,12 +35,15 @@
     margin-top: -10px;
  
 }
-.Recovery .back{
+.Recovery1 .back{
     position: absolute; 
-    top: 110px;
+    top: 130px;
     left: 500px;
     font-size: 18px;
+    cursor: pointer;
  }
+
+
 .Recovery-form input[type="email"],
 .Recovery-form button
  {
@@ -70,13 +81,13 @@ font-family: Segoe UI;
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 80px;
-    width: 360px;
+    width: 345px;
 }
 /**************************Password Confirm********************************/
 .RecoveryPass-container{
     max-width: 703px;
     min-height: 821px;
-    padding: 8% 0 0;
+    padding: 7% 0 0;
     margin: auto; 
     justify-content: flex-start;
     flex-direction: column;
@@ -92,9 +103,10 @@ font-family: Segoe UI;
 }
 .RecoveryPass .back{
     position: absolute; 
-    top: 110px;
+    top: 130px;
     left: 500px;
     font-size: 18px;
+    cursor: pointer;
  }
 .RecoveryPass-form{
     display: flex;
@@ -127,7 +139,14 @@ font-family: Segoe UI;
     font-size: 16px;
     font-weight: bold;
     text-transform: capitalize;
-    width: 350px;
+    width: 360px;
+    height: 40px;
+    margin-bottom: 70px;
+}
+ .RecoveryPass-form .RecoveryPassBtn p{
+  color: #fff;
+  margin-top: 1px;
+  font-size: 16px;
 }
 .Resed{
     text-align: center;
@@ -180,7 +199,14 @@ font-family: Segoe UI;
   border-radius: 5px;
   border: 1px solid  rgb(175, 172, 172);
   margin-top: 1px;
+  width: 340px;
+  height: 35px;
 }
+.RecoveryCheck-form p{
+    color: #fff;
+    margin-top: -1px;
+    font-size: 16px;
+  }
 .RecoveryCheck-form button {
   margin-top: 1rem;
   width: 85%;
@@ -228,18 +254,21 @@ font-family: Segoe UI;
         .box-container{
             display: grid;
             justify-content: space-evenly;
-            grid-template-columns: 50px 50px 50px 50px 50px 50px;
+            grid-template-columns: 30px 30px 30px 30px 30px 30px;
             gap: 1px;
             padding: 20px;  
            cursor: pointer;
+           margin-top: 10px;
          
         }
         .Recovery .back{
             position: absolute; 
-            top: 110px;
+            top: 140px;
             left: 500px;
             font-size: 18px;
+            cursor: pointer;
          }
+         
         .LeftBox{
             flex: 50%;
             width: 30px;
@@ -250,7 +279,8 @@ font-family: Segoe UI;
             justify-content: space-between;
             background-color: rgba(255, 255, 255, 0.8);
             text-align: center;
-           
+        
+            margin-left: -15px;
          
         }
         .RightBox{
@@ -260,37 +290,51 @@ font-family: Segoe UI;
             background-color: #fff;
             border-radius: 5px;
             border: 1px solid #D4D4D4;
-            margin-left: 20px;
+            margin-left: -5px;
         }
         .CheckEmail h4{
 font-size: 16px;
+margin-top: 30px;
         }
         .CheckEmail p{
             font-size: 16px;
             color: #707070;
                     }
-                   .Recovery-form .Resed1{
+                   .Recovery-form1 .Resed1{
                     text-align: center;
                     font-size: 14px;
                     margin-top: -15px;
                     margin-bottom: 40px;
                     }
-                   .Recovery-form .ResendLink1{
+                   .Recovery-form1 .ResendLink1{
                     text-decoration: none;
                     color: #4375FF;
                     }
-                   .Recovery-form .RecoveryBtn1{
+                .RecoveryBtn1{
                         background-color: #4375FF;
                         color: #fff;
                         cursor: pointer;  
                         margin-top: 50px;
                         font-size: 16px;
                         font-weight: bold;
-                           width: 350px;
+                           width: 370px;
                         text-transform: capitalize;
                         margin-bottom: 50px;
                     }
-                  
+                    .Recovery-form1 .RecoveryBtn1{
+                        background-color:#4375FF;
+                        border: 1px solid #4375FF;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        font-weight: bold;
+                        width: 360px;
+                        height: 40px;
+                    }
+                    .Recovery-form1  .RecoveryBtn1 p{
+                      color: #fff;
+                      margin-top: 1px;
+                      font-size: 16px;
+                    }
                     .RecoveryPass-form #eye{
 
                         position: absolute;

@@ -1,13 +1,13 @@
 import React from 'react'
-import './Brand.css'
 import img from '../../assest/logo.png'
+import { BrandHeader,BrandHeading,BrandImage}from './BrandStyle.js'
 const Brand = () => {
   return (
-    <div className='brand-header'>
-    <img src={img } alt=""/>
-    <span>Talents valley</span>
+    <BrandHeader BrandHeader>
+    <BrandImage src={img } alt=""/>
+    <BrandHeading>Talents valley</BrandHeading>
 
-    </div>
+    </BrandHeader>
   )
 }
 

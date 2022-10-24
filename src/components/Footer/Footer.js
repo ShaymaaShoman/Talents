@@ -1,13 +1,13 @@
 import React from 'react'
-import './Footer.css'
+import {PrivecyFooter,Service} from './FooterStyle.js'
 const Footer = () => {
   return (
   
-<div className="privecy">
-<p className='service'>Talents valley</p>
-<p className='service'>Contacts</p>
-<p className='service'>Privacy & terms </p>
-</div>
+<PrivecyFooter >
+<Service>Talents valley</Service>
+<Service > Contacts </Service>
+<Service> Privacy & terms  </Service>
+</PrivecyFooter>
 
     
   )
