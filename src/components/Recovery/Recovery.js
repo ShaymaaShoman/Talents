@@ -6,6 +6,7 @@ import { AiFillWarning } from "react-icons/ai";
 import { Link ,useNavigate  } from "react-router-dom";
 import { MdArrowBackIosNew} from "react-icons/md";
 import { useForm } from "react-hook-form";
+import {RecoveryContainer,Recoveryed ,Heading,BackStyle,ForgetEmail,ForgetPargraf,FormStyle,LabelStyle,InputEmailStyle,ButtonStyle,ButtonPargStyle}from './RecoveryEmStyle.js'
 const Recovery = () => {
   const navigate =useNavigate();
   const {
@@ -49,18 +50,18 @@ const Recovery = () => {
 // });}
   return (
     <>
-      <div className="Recovery-container">
-        <section className="Recovery">
+      <RecoveryContainer>
+        <Recoveryed >
           <Brand />
-          <p className="back" onClick={()=>navigate("/SignIn",{replace:true})}><MdArrowBackIosNew/></p>
-          <div className="forgetEmail">
-            <h4>Forget Password ?</h4>
-            <p>We'll send a code to your email to reset your password</p>
-          </div>
-          <form  onSubmit={handleSubmit(onSubmit)}  className="Recovery-form">
+          <BackStyle onClick={()=>navigate("/SignIn",{replace:true})}><MdArrowBackIosNew/></BackStyle>
+          <ForgetEmail>
+            <Heading>Forget Password ?</Heading>
+            <ForgetPargraf>We'll send a code to your email to reset your password</ForgetPargraf>
+          </ForgetEmail>
+          <FormStyle onSubmit={handleSubmit(onSubmit)} >
           <>
-          <label htmlFor="email">Email</label>
-          <input
+          <LabelStyle htmlFor="email">Email</LabelStyle>
+          <InputEmailStyle
             type="email"
             id="email"
             name="email"
@@ -81,11 +82,11 @@ const Recovery = () => {
         </>
 
             <Link to="/RecoveryBox">
-              <button className="RecoveryBtn"> Send Code</button>
+              <ButtonStyle> <ButtonPargStyle>Send Code</ButtonPargStyle></ButtonStyle>
             </Link>
-          </form>
-        </section>
-      </div>
+          </FormStyle>
+        </Recoveryed >
+      </RecoveryContainer>
 
       <Footer />
     </>

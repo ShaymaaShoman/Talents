@@ -1,11 +1,5 @@
 .Recovery-container{
-    max-width: 703px;
-    min-height: 821px;
-    padding: 7% 0 0;
-    margin: auto; 
-    justify-content: flex-start;
-    flex-direction: column;
-    margin-top: -40px;
+  
     
   }
   .Recovery1{
@@ -18,12 +12,7 @@
 
   }
 .Recovery{
-    background: #FFFFFF;
-    border-radius: 10px;
-    max-width: 340px;
-    margin: 0 auto 100px;
-    padding: 40px 40px;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+   
   
 } 
 .Recovery-form{
@@ -59,7 +48,7 @@
   margin-top: 1rem;
 }
 .forgetEmail{
-    margin-top: 30px;
+  
 }
 .forgetEmail h4{
 font-size: 13px;
@@ -70,8 +59,7 @@ font-weight: Semibold;
 font-family: Segoe UI;
 }
 .forgetEmail p{
-    font-size: 12px;
-    color: #707070;
+   
 }
 .Recovery-form .RecoveryBtn{
     background-color: #4375FF;
@@ -168,21 +156,10 @@ font-family: Segoe UI;
 }
 /*************************Checked*****************************************/
 .RecoveryCheck-container{
-    max-width: 703px;
-    min-height: 821px;
-    padding: 8% 0 0;
-    margin: auto; 
-    justify-content: flex-start;
-    flex-direction: column;
-    margin-top: -60px;
+    
 }
 .RecoveryCheck{
-    background: #FFFFFF;
-    border-radius: 10px;
-    max-width: 360px;
-    margin: 0 auto 100px;
-    padding: 40px 40px;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+ 
 }
 .RecoveryCheck-form{
     display: flex;
@@ -213,12 +190,10 @@ font-family: Segoe UI;
   margin-left: 40px;
 }
 .PasswordRest{
-    text-align: center;
+    
 }
 .PasswordRest img{
-width: 40px;
-height: 40px;
-margin-top: 40px;
+
 }
 .PasswordRest h4{
  
@@ -230,24 +205,13 @@ font-weight: Semibold;
 font-family: Segoe UI;
     }
     .PasswordRest p{
-        font-size: 14px;
-        word-spacing: 1px;
+       
         }
         .ClickLog{
-            font-size: 18px;
-            margin-left: -140px;
-            margin-top: -10px;
-            margin-bottom: 60px;
+            
         }
         .RecoveryCheckBtn{
-            background-color: #4375FF;
-    color: #fff;
-    cursor: pointer;  
-    margin-top: 60px;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: capitalize;
-    margin-bottom: 80px;
+    
 
         }
         /*****************************************************************************/

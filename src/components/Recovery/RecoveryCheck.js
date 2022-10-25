@@ -1,10 +1,11 @@
 import React from "react";
 import Brand from "../Brand/Brand";
-import "./Recover.css";
 import check from "../../assest/check.jpg";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import {RecoveryCheckContainer, RecoveryChecked,PasswordRest,Img,Heading,ClickLog,Parg,FormStyle ,ButtonStyle ,ButtonPargStyle }from './RecoveryCheckStyle.js'
+
 const RecoveryCheck = () => {
   const {
     handleSubmit,
@@ -13,27 +14,27 @@ const RecoveryCheck = () => {
   } = useForm();
   return (
     <>
-      <div className="RecoveryCheck-container">
-        <section className="RecoveryCheck">
+      <RecoveryCheckContainer>
+        <RecoveryChecked RecoveryChecked>
           <Brand />
-          <div className="PasswordRest">
-            <img src={check} alt="" />
-            <h4>Password Reset</h4>
-            <p>Your Password has been Successfully Reset.</p>
-            <p className="ClickLog">Click Below To Login</p>
-          </div>
-          <form onSubmit={handleSubmit} className="RecoveryCheck-form">
+          <PasswordRest>
+            <Img src={check} alt="" />
+            <Heading >Password Reset</Heading>
+            <Parg>Your Password has been Successfully Reset.</Parg>
+            <ClickLog>Click Below To Login</ClickLog>
+          </PasswordRest>
+          <FormStyle onSubmit={handleSubmit} >
             <Link to="/Home">
-              <button className="RecoveryCheckBtn" type="submit">
+              <ButtonStyle type="submit">
                 {" "}
                 <Link to="/">
-                  <p>Sign in</p>
+                  <ButtonPargStyle >Sign in</ButtonPargStyle>
                 </Link>
-              </button>
+              </ButtonStyle>
             </Link>
-          </form>
-        </section>
-      </div>
+          </FormStyle>
+        </RecoveryChecked>
+      </RecoveryCheckContainer>
       <Footer />
     </>
   );
