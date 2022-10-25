@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Brand from "../Brand/Brand";
 import Footer from "../Footer/Footer";
-import "./Recover.css";
 import { Link,useNavigate } from "react-router-dom";
 import { MdArrowBackIosNew} from "react-icons/md";
 import {useForm} from 'react-hook-form'
@@ -10,6 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
 import { AiFillWarning } from "react-icons/ai";
 import axios from 'axios';
+import {RecoveryPassContainer,RecoveryPass, BackStyle,ForgetPassword,Heading,FormStyle,LabelStyle,InputStyle,ButtonStyle,ButtonPargStyle }from './RecoveryPaswStyle'
 const RecoveryPassword = () => {
  
   const navigate =useNavigate();
@@ -28,7 +28,7 @@ const RecoveryPassword = () => {
   const {register, watch,handleSubmit,formState: { errors }, reset, trigger,getValues} = useForm({
     mode: "onTouched",
     resolver: yupResolver(formSchema)})
-  const{getActiveColor,hidePassword, handlePassword,message ,setHidePassword,setMessage,}=PasswordForm();
+  const{getActiveColor,hidePassword, handlePassword,message ,setHidePassword,setMessage}=PasswordForm();
 const [password,setPassword]=useState('');
 const [ConfirmPassword,setConfirmPassword]=useState('');
 
@@ -78,16 +78,16 @@ const onSubmit = async (data) => {
 
   return (
     <>
-    <div className="RecoveryPass-container">
-    <section className="RecoveryPass">
+    <RecoveryPassContainer >
+    <RecoveryPass>
     <Brand />
-    <p className="back" onClick={()=>navigate("/RecoveryBox",{replace:true})}><MdArrowBackIosNew/></p>
-    <div className="forgetPassword">
-        <h4>Create New Password</h4>
-      </div>
-      <form  onSubmit={handleSubmit(onSubmit)} className="RecoveryPass-form">
-      <label htmlFor="password">New Password</label>
-      <input
+    <BackStyle onClick={()=>navigate("/RecoveryBox",{replace:true})}><MdArrowBackIosNew/></BackStyle>
+    <ForgetPassword>
+        <Heading>Create New Password</Heading>
+      </ForgetPassword>
+      <FormStyle  onSubmit={handleSubmit(onSubmit)} >
+      <LabelStyle htmlFor="password">New Password</LabelStyle>
+      <InputStyle
       id="password"
        name="password"
       {...register("password", {
@@ -105,8 +105,8 @@ const onSubmit = async (data) => {
       <p className="text-danger">password cannot less than 5 characters</p>
     )}
   
-    <label htmlFor="ConfirmPassword">Re-Enter Password</label>
-    <input
+    <LabelStyle htmlFor="ConfirmPassword">Re-Enter Password</LabelStyle>
+    <InputStyle
       {...register("ConfirmPassword", { required: true })}
       className={`form-control ${errors.password && "invalid"}`}
       type="password"
@@ -118,17 +118,17 @@ const onSubmit = async (data) => {
     getValues("ConfirmPassword") ? (
       <p className="text-danger"> <AiFillWarning/> password not match</p>
     ) : null}
-       <button className="RecoveryPassBtn" type="submit" >
+       <ButtonStyle  type="submit" >
           {" "}
           <Link to="/RecoveryCheck">
-         <p>Continue</p> 
+         <ButtonPargStyle>Continue</ButtonPargStyle> 
         </Link>
            
-          </button>
+          </ButtonStyle>
      
-      </form>
-    </section>
-    </div>
+      </FormStyle>
+    </RecoveryPass>
+    </RecoveryPassContainer>
   <Footer />
 
     </>

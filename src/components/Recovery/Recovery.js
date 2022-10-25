@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Brand from "../Brand/Brand";
 import Footer from "../Footer/Footer";
-import "./Recover.css";
 import { AiFillWarning } from "react-icons/ai";
 import { Link ,useNavigate  } from "react-router-dom";
 import { MdArrowBackIosNew} from "react-icons/md";

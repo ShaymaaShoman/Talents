@@ -13,7 +13,7 @@ import './Sign-up.css'
 import PasswordForm from "../Password/PasswordForm";
 
 import AuthContext from "../context/AuthProvider";
-import { LoginContainer ,LoginSection,Heading,FormStyle,InputEmailStyle ,DangerStyle,InputStyle,LabelStyle,DAcount ,ALinks ,ButtonStyle,ForgetPassword,ButtonPargStyle} from "./StyleSignup";
+import { LoginContainer ,LoginSection,Heading,FormStyle,InputEmailStyle ,DangerStyle,InputStyle1,LabelStyle,DAcount ,ALinks ,ButtonStyle,ForgetPassword,ButtonPargStyle} from "./StyleSignup";
 const SignIn = () => {
   const { setAuth } = useContext(AuthContext);
   const [errMsg, setErrMsg] = useState('');
@@ -83,7 +83,7 @@ const SignIn = () => {
        
                 <LabelStyle  htmlFor="email">Email</LabelStyle>
                 
-                <InputStyle
+                <InputStyle1
                   type="email"
                   id="email"
                   name="email"
@@ -104,7 +104,7 @@ const SignIn = () => {
           
               <>
                 <LabelStyle  htmlFor="password">Password</LabelStyle>
-                <InputStyle
+                <InputStyle1
                 
                   type= {hidePassword ? "password" : "text"}
                   id="password"

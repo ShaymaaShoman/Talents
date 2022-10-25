@@ -36,12 +36,10 @@ flex-grow: 1;
 padding-bottom: 1rem;
 margin-top: -10px;
 position: relative;
-
-
 `;
-export const InputStyle = styled.input`
+export const InputStyle1 = styled.input`
 font-family: 'Segoe UI';
-  padding: .37rem;
+  padding: .57rem;
   border-radius: 5px;
   border: 1px solid  rgb(175, 172, 172);
   margin-top: -5px;
@@ -77,7 +75,7 @@ border: 1px solid #4375FF;
 `;
 export const ButtonPargStyle = styled.p`
 color: #fff;
-margin-top: 1px;
+margin-top: 10px;
 font-size: 16px;
 `;
 export const DangerStyle = styled.small`
@@ -92,9 +90,10 @@ color :red;
 `;
 export const DAcount = styled.p`
 text-align: center;
-margin-top: 2.5rem;
+margin-top: 2rem;
 color:  #666;
 font-size: 12px;
+margin-bottom:40px ;
 
 
 `;
@@ -115,7 +114,7 @@ export const ForgetPassword= styled.p`
     border-radius: 5px;
     margin-top: -10px;
    
-  padding-left: 20px;
+  padding-left: 30px;
 `;
 
 export const Invalid= styled.input`

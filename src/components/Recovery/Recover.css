@@ -3,12 +3,7 @@
     
   }
   .Recovery1{
-    background: #FFFFFF;
-    border-radius: 10px;
-    max-width: 380px;
-    margin: 0 auto 100px;
-    padding: 30px 40px;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+   
 
   }
 .Recovery{
@@ -137,9 +132,7 @@ font-family: Segoe UI;
   font-size: 16px;
 }
 .Resed{
-    text-align: center;
-    font-size: 14px;
-    margin-top: 25px;
+  
 }
 .Resed .ResendLink{
     text-decoration: none;
@@ -216,13 +209,7 @@ font-family: Segoe UI;
         }
         /*****************************************************************************/
         .box-container{
-            display: grid;
-            justify-content: space-evenly;
-            grid-template-columns: 30px 30px 30px 30px 30px 30px;
-            gap: 1px;
-            padding: 20px;  
-           cursor: pointer;
-           margin-top: 10px;
+           
          
         }
         .Recovery .back{
@@ -234,27 +221,11 @@ font-family: Segoe UI;
          }
          
         .LeftBox{
-            flex: 50%;
-            width: 30px;
-            height: 30px;
-            background-color: #fff;
-            border-radius: 5px;
-            border: 1px solid #D4D4D4;
-            justify-content: space-between;
-            background-color: rgba(255, 255, 255, 0.8);
-            text-align: center;
         
-            margin-left: -15px;
          
         }
         .RightBox{
-            flex: 50%;
-            width: 30px;
-            height: 30px;
-            background-color: #fff;
-            border-radius: 5px;
-            border: 1px solid #D4D4D4;
-            margin-left: -5px;
+          
         }
         .CheckEmail h4{
 font-size: 16px;
@@ -271,8 +242,7 @@ margin-top: 30px;
                     margin-bottom: 40px;
                     }
                    .Recovery-form1 .ResendLink1{
-                    text-decoration: none;
-                    color: #4375FF;
+                   
                     }
                 .RecoveryBtn1{
                         background-color: #4375FF;
@@ -286,13 +256,7 @@ margin-top: 30px;
                         margin-bottom: 50px;
                     }
                     .Recovery-form1 .RecoveryBtn1{
-                        background-color:#4375FF;
-                        border: 1px solid #4375FF;
-                        border-radius: 5px;
-                        cursor: pointer;
-                        font-weight: bold;
-                        width: 360px;
-                        height: 40px;
+                        
                     }
                     .Recovery-form1  .RecoveryBtn1 p{
                       color: #fff;

@@ -1,18 +1,20 @@
-import React, { useRef ,useState} from "react";
-import "./Register.css";
+import React, { useRef ,useState,useMemo} from "react";
 import { BiHide } from "react-icons/bi";
 import Brand from "../Brand/Brand";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import SignIn from "../Sign-up/SignIn";
-import PhoneNumber from "../PhoneInput/PhoneNumber";
+import './Register.css'
 // import { FaEyeSlash } from "react-icons/fa";
 // import { FaEye } from "react-icons/fa";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import Select from 'react-select'
+import countryList from 'react-select-country-list'
 import { useForm } from "react-hook-form";
 import { AiFillWarning } from "react-icons/ai";
+import {SignContainer,Sign,Heading,FormStyle,FulName,LabelStylePhone ,InputText,LabelContry ,SignLink,Label,ColHalf,AlreadyAcouuntSpan,ButtonPargStyle ,InputStyle,LabelStyle,ButtonStyle  }from './RegisterStyle.js'
 const Register = ({validatePassword}) => {
   const errRef = useRef();
   const {
@@ -24,11 +26,17 @@ const Register = ({validatePassword}) => {
     trigger,
   } = useForm();
   
+  const [value, setValue] = useState( "");
+  const [phone, setPhone] = useState('')
+  const options = useMemo(() => countryList().getData(), [])
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
   const [password,setPassword]=useState('');
   const [hidePassword, setHidePassword] = useState(true);
 const [email, setEmail] = useState("");;
+const changeHandler = value => {
+  setValue(value)
+}
 const onSubmit = async (data) => {
   if (!email || !password) {
     setErrMsg("Invalid Entry");
@@ -96,7 +104,6 @@ try {
 
  }
 
-  const [value, setValue] = useState( "");
 
   
 
@@ -104,64 +111,43 @@ try {
 
   return (
     <>
-      <div className="sign-container">
-        <section className="sign">
+      <SignContainer>
+        <Sign>
           <Brand />
-          <h4>Create Your Account</h4>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="fulName">
-              <div className="col_half">
-                <div className="input_field">
-                  <label htmlFor="FirstName">First Name </label>
-                  <input
-                    type="text"
-                    name="FirstName"
-                    id="FirstName"
-                    placeholder=" Enter First Name"
-                    {...register("firstName", {
-                      required: "firstName is required",
-                    })}
-                    className={`form-control ${errors.name && "invalid"}`}
-
-                  />
-                  {errors.name && (
-                    <small className="text-danger">
-                      {" "}
-                      {errors.name.message}{" "}
-                    </small>
-                  )}
-                </div>
-              </div>
-              <div className="col_half">
-                <div className="input_field">
-                  {" "}
-                  <label htmlFor="LastName" id="Last">
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    id="LastName"
-                    name="LastName"
-                    placeholder="Enter Last Name"
-                    maxLength="20"
-                    {...register("lastName", {
-                      required: "lastName is required",
-                    })}
-                    className={`form-control ${errors.name && "invalid"}`}
-
-                  />
-                  {errors.name && (
-                    <small className="text-danger">
-                      {errors.name.message}{" "}
-                    </small>
-                  )}
-                </div>
-              </div>
-            </div>
+          <Heading>Create Your Account</Heading>
+          <FormStyle onSubmit={handleSubmit(onSubmit)}>
+          <FulName>
+          <ColHalf >
+          <Label>
+            First Name
+          </Label>
+          <InputText type="text"       name="FirstName"
+                  id="FirstName"
+                  placeholder=" Enter First Name"
+                  {...register("firstName", {
+                    required: "firstName is required",
+                  })}
+                  className={`form-control ${errors.name && "invalid"}`} />
+        </ColHalf>
+    
+        <ColHalf >
+          <Label>
+            Last Name
+          </Label>
+          <InputText type="text"    id="LastName"
+                  name="LastName"
+                  placeholder="Enter Last Name"
+             
+                  {...register("lastName", {
+                    required: "lastName is required",
+                  })}
+                  className={`form-control ${errors.name && "invalid"}`}/>
+        </ColHalf>
+        </FulName>
 
             <>
-              <label htmlFor="email">Email</label>
-              <input
+              <LabelStyle  htmlFor="email">Email</LabelStyle>
+              <InputStyle
                 type="email"
                 name="email"
                 placeholder="email@gmail.com"
@@ -181,8 +167,8 @@ try {
             
             </>
             <>
-              <label htmlFor="password">Password</label>
-              <input
+              <LabelStyle label htmlFor="password">Password</LabelStyle>
+              <InputStyle
                 type="password"
                 id="password"
                 name="password"
@@ -229,51 +215,46 @@ try {
             </>
 
             <>
-              <label htmlFor="phone"> phone number</label>
+              <LabelStylePhone  htmlFor="phone"> phone number</LabelStylePhone>
+             
               <PhoneInput
-            onChange={setValue}
+            onChange={setPhone}
                 country="US"
-                value={value}
+                value={phone}
                 id="phone"
                 name="phone"
                 {...register("phone", {
                   required:  "Incorrect phone" 
                })}
-            
+               style={{width: '980px'}}
               />
+         
               {errors.phone && (
                 <small className="text-danger"><AiFillWarning/> {errors.phone.message}</small>
               )}
             </>
             <>
-              <label>Country</label>
-              <select    {...register("select", {
-                required:  "Incorrect select" 
-             })}>
-                <option></option>
-                <option>Palestain</option>
-                <option>UAE</option>
-             
-              </select>
+              <LabelContry  >Country</LabelContry>
+              <Select options={options} value={value} onChange={changeHandler} placeholder="" />
              
            
              {errors.name && (
               <small className="text-danger">Incorrect Country</small>
             )}
             </>
-            <button className="signup1" type="submit">
-            <Link to="/SignIn"><p>Sign Up </p>  </Link> 
-            </button>
+            <ButtonStyle  type="submit">
+            <Link to="/SignIn"><ButtonPargStyle >Sign Up </ButtonPargStyle>  </Link> 
+            </ButtonStyle>
 
-            <p className="AlreadyAcouunt">
+            <AlreadyAcouuntSpan>
               Already have an account?{" "}
               <Link to="/SignIn">
-                <span>&nbsp;Sign In</span>
+                <SignLink>&nbsp;Sign In</SignLink>
               </Link>{" "}
-            </p>
-          </form>
-        </section>
-      </div>
+            </AlreadyAcouuntSpan>
+          </FormStyle>
+        </Sign>
+      </SignContainer>
 
       <Footer />
     </>
@@ -281,3 +262,39 @@ try {
 };
 
 export default Register;
+// <FulName >
+//   <ColHalf>
+//     <InputField>
+//       <Label htmlFor="FirstName">First Name </Label>
+//       <input
+//         type="text"
+//   
+
+//       />
+//       {errors.name && (
+//         <small className="text-danger">
+//           {" "}
+//           {errors.name.message}{" "}
+//         </small>
+//       )}
+//     </InputField>
+//   </ColHalf>
+//   <ColHalf>
+//     <InputField>
+//       {" "}
+//       <label htmlFor="LastName">
+//         Last Name
+//       </label>
+//       <input
+//         type="text"
+//     
+
+//       />
+//       {errors.name && (
+//         <small className="text-danger">
+//           {errors.name.message}{" "}
+//         </small>
+//       )}
+//     </InputField>
+//   </ColHalf>
+// </FulName>

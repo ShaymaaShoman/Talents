@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import { Link ,useNavigate  } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { MdArrowBackIosNew} from "react-icons/md";
+import {RecoveryContainer,Recovery1,BackStyle,CheckEmail,Heading,ResendLink1 , Parg,ClickLog, Resed1,BoxContainer,LeftBox,RightBox,FormStyle,ButtonStyle,ButtonPargStyle }from './RecoveryBoxStyle.js'
 const RecoveryBox = () => {
   const navigate =useNavigate();
   const {
@@ -43,41 +44,41 @@ const RecoveryBox = () => {
   localStorage.getItem('user-info')
   return (
     <>
-    <div  className='Recovery-container'>
-      <section className='Recovery1' >
+    <RecoveryContainer>
+      <Recovery1 >
       <Brand />
-      <p className="back" onClick={()=>navigate("/Recovery",{replace:true})}><MdArrowBackIosNew/></p>
-      <div className='CheckEmail'>
-      <h4>Check Your Email</h4>
-      <p>We have sent you an email that contains a code to<br/>
-      reset your password</p>
-      </div>
-<div className='box-container'>
+      <BackStyle onClick={()=>navigate("/Recovery",{replace:true})}><MdArrowBackIosNew/></BackStyle>
+      <CheckEmail>
+      <Heading>Check Your Email</Heading>
+      <Parg>We have sent you an email that contains a code to</ Parg>
+      <ClickLog> reset your password </ClickLog>
+      </CheckEmail>
+<BoxContainer>
 
-<input type="text"  className='LeftBox'/>
-<input type="text" className='LeftBox'/>
-<input type="text" className='LeftBox' />
-<input type="text"  className='RightBox'/>
-<input type="text" className='RightBox'/>
-<input type="text" className='RightBox'/>
-</div>
+<LeftBox input type="text"  />
+<LeftBox  type="text"/>
+<LeftBox  type="text"  />
+<RightBox type="text"  />
+<RightBox type="text" />
+<RightBox type="text" />
+</BoxContainer>
 
 
-      <form onSubmit={handleSubmit} className='Recovery-form1'>
+      <FormStyle onSubmit={handleSubmit} >
      
-      <button className='RecoveryBtn1' type="submit"> <Link to="/RecoveryPassword" ><p> Continue </p>  </Link>
-      </button>
+      <ButtonStyle type="submit"> <Link to="/RecoveryPassword" ><ButtonPargStyle> Continue </ButtonPargStyle>  </Link>
+      </ButtonStyle>
   
 
-      <p className='Resed1'>Didn't get the code? <Link to="/RecoveryPassword" >
+      <Resed1>Didn't get the code? <Link to="/RecoveryPassword" >
       <Link to="/RecoveryBox" >
-      <a href="#" className='ResendLink1'>&nbsp;Resend</a>
+      <ResendLink1 >&nbsp;Resend</ResendLink1>
     </Link>
    
-    </Link></p>
-      </form>
-      </section>
-    </div>
+    </Link></ Resed1>
+      </FormStyle>
+      </Recovery1>
+    </RecoveryContainer>
       <Footer/>
     </>
   )
