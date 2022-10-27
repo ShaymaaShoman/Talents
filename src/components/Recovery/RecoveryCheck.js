@@ -5,13 +5,25 @@ import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {RecoveryCheckContainer, RecoveryChecked,PasswordRest,Img,Heading,ClickLog,Parg,FormStyle ,ButtonStyle ,ButtonPargStyle }from './RecoveryCheckStyle.js'
-
+import axios from "axios";
 const RecoveryCheck = () => {
   const {
     handleSubmit,
     formState: { errors },
     
   } = useForm();
+  const onSubmit = async (e,data) => {
+    console.log(data);
+  // const res = await axios({
+  //   method: 'PATCH',
+  //   url:
+  //       `https://talents-valley.herokuapp.com/api/user/password/verify-code/${token}`,
+  //   data: {
+  //       password,
+  //       passwordValidation
+  //   }
+  // });
+}
   return (
     <>
       <RecoveryCheckContainer>

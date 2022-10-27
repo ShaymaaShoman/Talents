@@ -7,11 +7,13 @@ left: 0;
 bottom: 0;
 width: 100%;
 color: white;
+font-size: 14px;
 `;
 export const  Service= styled.p`
 cursor: pointer;
 color: #262727;
 margin-left: 70px;
 padding: -15px;
+
 
 `;

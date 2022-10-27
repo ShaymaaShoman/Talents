@@ -50,12 +50,12 @@ font-weight: Semibold;
 font-size: 12px;
 color:#707070; 
 border: #707070; 
-margin-bottom: 5px;
+margin-bottom: 15px;
 margin-top: 15px;
 `;
 export const InputStyle = styled.input`
 font-family: 'Segoe UI';
-  padding: .37rem;
+  padding: .77rem;
   border-radius: 5px;
   border: 1px solid  rgb(175, 172, 172);
   margin-top: -5px;
@@ -77,4 +77,30 @@ export const ButtonPargStyle = styled.p`
 color: #fff;
 margin-top: 10px;
 font-size: 16px;
+`;
+export const DangerStyle = styled.small`
+color :red;
+  font-size: 12px;
+
+`;
+export const CorrectStyle = styled.small`
+color :green;
+  font-size: 12px;
+
+`;
+export const Icon= styled.p`
+
+  font-size: 18px;
+  position: absolute;
+  color:#00000029;  
+  padding-left: 315px;
+  margin-top: -140px;
+`;
+export const Icon1= styled.p`
+
+  font-size: 18px;
+  position: absolute;
+  color:#00000029; 
+  padding-left: 315px;
+  margin-top: 60px;
 `;

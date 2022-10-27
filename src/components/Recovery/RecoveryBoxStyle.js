@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const RecoveryContainer = styled.div`
 max-width: 703px;
 min-height: 821px;
-padding: 7% 0 0;
+padding: 10% 0 0;
 margin: auto; 
 justify-content: flex-start;
 flex-direction: column;
-margin-top: -40px;
+margin-top: -60px;
 `;
 
 export const Recovery1 = styled.div`
@@ -15,7 +15,7 @@ background: #FFFFFF;
 border-radius: 10px;
 max-width: 380px;
 margin: 0 auto 100px;
-padding: 30px 40px;
+padding: 40px 40px;
 box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 `;
 export const BackStyle = styled.p`

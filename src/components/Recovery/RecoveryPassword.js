@@ -8,8 +8,10 @@ import PasswordForm from "../Password/PasswordForm";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
 import { AiFillWarning } from "react-icons/ai";
+import {AiFillCheckCircle } from "react-icons/ai";
+import { FaEyeSlash } from "react-icons/fa";
 import axios from 'axios';
-import {RecoveryPassContainer,RecoveryPass, BackStyle,ForgetPassword,Heading,FormStyle,LabelStyle,InputStyle,ButtonStyle,ButtonPargStyle }from './RecoveryPaswStyle'
+import {RecoveryPassContainer,RecoveryPass,CorrectStyle, BackStyle,DangerStyle,ForgetPassword,Heading, Icon1,Icon,FormStyle,LabelStyle,InputStyle,ButtonStyle,ButtonPargStyle }from './RecoveryPaswStyle'
 const RecoveryPassword = () => {
  
   const navigate =useNavigate();
@@ -32,7 +34,7 @@ const RecoveryPassword = () => {
 const [password,setPassword]=useState('');
 const [ConfirmPassword,setConfirmPassword]=useState('');
 
-
+const [showResults, setShowResults] = useState(true);
 
 const onSubmit = async (data) => {
   console.log(JSON.stringify(data, null, 4))
@@ -73,7 +75,7 @@ const onSubmit = async (data) => {
 }
 
 
-    
+const onClick = () => setShowResults(false);
 
 
   return (
@@ -99,10 +101,13 @@ const onSubmit = async (data) => {
       }}
       type="password"
       className={`form-control ${errors.password && "invalid"}`}
+      onClick={onClick}
     />
+    { showResults ?  <Icon ><FaEyeSlash/></Icon>  : null }
+   
     {errors?.password?.type === "required" && <p className="text-danger">This field is required</p>}
     {errors?.password?.type === "minLength" && (
-      <p className="text-danger">password cannot less than 5 characters</p>
+      <DangerStyle>password cannot less than 5 characters</DangerStyle>
     )}
   
     <LabelStyle htmlFor="ConfirmPassword">Re-Enter Password</LabelStyle>
@@ -112,12 +117,19 @@ const onSubmit = async (data) => {
       type="password"
       id ="ConfirmPassword"
      name="ConfirmPassword"
+     onClick={onClick}
     />
-
+    { showResults ?  <Icon1 ><FaEyeSlash/></Icon1>  : null }
+   
     {watch("ConfirmPassword") !== watch("password") &&
     getValues("ConfirmPassword") ? (
-      <p className="text-danger"> <AiFillWarning/> password not match</p>
+      <DangerStyle> <AiFillWarning/> password not match</DangerStyle>
     ) : null}
+    {watch("ConfirmPassword") == watch("password") &&
+    getValues("ConfirmPassword") ? (
+      <CorrectStyle> <AiFillCheckCircle/> password  match</CorrectStyle>
+    ) : null}
+    
        <ButtonStyle  type="submit" >
           {" "}
           <Link to="/RecoveryCheck">

@@ -1,28 +1,12 @@
 
-.sign #eye1{
-    position: absolute;
-    top: 38%;
-    right: 5%;
-    cursor: pointer;
-    color: lightgray;
-    width: 20px;
-    height: 20px;
-    font-size: 10px;
 
-}
-
-.text-danger{
-    color :red;
-}
-.invalid {
-    border:1px solid red !important;
-   }
 
    .react-tel-input .form-control {
     width: 350px !important; 
     height: 40px !important;
+    
    }
-   
    .css-1s2u09g-control {
     width: 350px;
+
    }

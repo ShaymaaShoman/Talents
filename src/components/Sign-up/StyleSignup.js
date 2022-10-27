@@ -6,15 +6,15 @@ padding: 7% 0 0;
 margin: auto; 
 justify-content: flex-start;
 flex-direction: column;
-margin-top: -20px;
+
 
 `;
 export const LoginSection = styled.section`
 background: #FFFFFF;
     border-radius: 10px;
-    max-width: 340px;
+    max-width: 360px;
     margin: 0 auto 100px;
-    padding: 20px 70px;
+    padding: 5px 40px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     margin-top: -31px;
     margin-bottom: 26px;
@@ -39,12 +39,13 @@ position: relative;
 `;
 export const InputStyle1 = styled.input`
 font-family: 'Segoe UI';
-  padding: .57rem;
+  padding: .77rem;
   border-radius: 5px;
   border: 1px solid  rgb(175, 172, 172);
   margin-top: -5px;
   margin-bottom: 15px;
   width: 330px;
+  
 `;
 export const InputEmailStyle = styled.input`
     margin-bottom: 5px;
@@ -60,14 +61,14 @@ font-weight: Semibold;
 font-size: 12px;
 color:#707070; 
 border: #707070; 
-margin-bottom: 5px;
-margin-top: 5px;
+margin-bottom: 15px;
+margin-top: 15px;
 `;
 export const ButtonStyle = styled.button `
 background-color:#4375FF;
 cursor: pointer;
 font-weight: bold;
-width: 350px;
+width: 360px;
 height: 40px;
 margin-top: 1rem;
 border-radius: 5px;
@@ -100,6 +101,7 @@ margin-bottom:40px ;
 export const ALinks= styled.a`
 text-decoration: none;
 
+color: #4375FF;
 `;
 export const Span= styled.span`
 color: red;
@@ -113,8 +115,8 @@ export const ForgetPassword= styled.p`
     font-size: 12px;
     border-radius: 5px;
     margin-top: -10px;
-   
-  padding-left: 30px;
+
+ 
 `;
 
 export const Invalid= styled.input`
@@ -123,5 +125,23 @@ border: 1px solid #F50000;
 
 
 `;
+export const Icon= styled.p`
+
+  font-size: 18px;
+  position: absolute;
+  color:#00000029; 
+  padding-left: 320px;
+  margin-top: -10px;
+`;
 
 
+// export const Style={
+//   border: 1px solid #F50000;
+//   font-size: 12px;
+//  }
+
+export const Select= styled.p`
+
+  font-size: 12px;
+  
+`;

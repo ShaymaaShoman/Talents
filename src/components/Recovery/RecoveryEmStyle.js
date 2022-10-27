@@ -3,18 +3,18 @@ import styled from 'styled-components';
 export const RecoveryContainer = styled.div`
 max-width: 703px;
 min-height: 821px;
-padding: 7% 0 0;
+padding: 10% 0 0;
 margin: auto; 
 justify-content: flex-start;
 flex-direction: column;
-margin-top: -40px;
+margin-top: -60px;
 `;
 export const Recoveryed = styled.section `
 background: #FFFFFF;
 border-radius: 10px;
 max-width: 340px;
 margin: 0 auto 100px;
-padding: 40px 60px;
+padding: 50px 60px;
 box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 `;
 export const Heading = styled.h4`
@@ -57,7 +57,7 @@ font-size: 12px;
 color:#707070; 
 border: #707070; 
 margin-bottom: 5px;
-margin-top: 15px;
+margin-top: 30px;
 `;
 export const InputEmailStyle = styled.input`
     margin-bottom: 5px;
@@ -65,7 +65,7 @@ font-family: 'Segoe UI';
   padding: .57rem;
   border-radius: 5px;
   border: 1px solid  rgb(175, 172, 172);
-  margin-top: -5px;
+  margin-top: 5px;
   
 `;
 export const ButtonStyle = styled.button `

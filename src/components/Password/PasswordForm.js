@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
 // // validation function
-// export const validatePassword = (value) => {
-//     if ( !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/.test(value)) {
-//       return 'Your password is  weak'+"#FF0054";
-//     } else if (
-//         /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/.test(value)
-//     ) {
-//       return 'Nice Work. This is excellent password '+"#8BC926";
-//     }
-//     return true;
-//   };
+export const validatePassword = (value) => {
+    if ( !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/.test(value)) {
+      return 'Your password is  weak'+"#FF0054";
+    } else if (
+        /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/.test(value)
+    ) {
+      return 'Nice Work. This is excellent password '+"#8BC926";
+    }
+    return true;
+  };
 
 
 const PasswordForm = () => {
@@ -25,7 +25,13 @@ const [hidePassword, setHidePassword] = useState(true);
       hasDigit: false,
       hasSpecialChar: false,
     };
-
+// if(password==''){
+//   return require;
+// }else if(!password.includes(/!@#$*/)){
+// return <p><AiFillWarning/>Week</p>;
+//   }else if(password.includes(/!@#$*/)){
+// return <p><AiFillCheckCircle/>Strong</p>;
+//   }
     strengthChecks.length = passwordValue.length >= 10 ? true : false;
     strengthChecks.hasUpperCase = /[A-Z]+/.test(passwordValue);
     strengthChecks.hasLowerCase = /[a-z]+/.test(passwordValue);
@@ -43,8 +49,6 @@ const [hidePassword, setHidePassword] = useState(true);
 
     setPassword(passwordValue);
     setMessage(strength);
-
-    console.log("verifiedList: ", `${(verifiedList.length / 5) * 100}%`);
   };
 
   const getActiveColor = (type) => {

@@ -1,113 +1,101 @@
-import React, { useRef ,useState,useMemo} from "react";
-import { BiHide } from "react-icons/bi";
-import Brand from "../Brand/Brand";
-import Footer from "../Footer/Footer";
+import React, { useState,useMemo} from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import SignIn from "../Sign-up/SignIn";
-import './Register.css'
-// import { FaEyeSlash } from "react-icons/fa";
-// import { FaEye } from "react-icons/fa";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import Select from 'react-select'
-import countryList from 'react-select-country-list'
 import { useForm } from "react-hook-form";
+import { getCountries, getCountryCallingCode } from 'react-phone-number-input/input'
+import en from 'react-phone-number-input/locale/en.json'
+
+
+import './Register.css'
+import { FaEyeSlash } from "react-icons/fa";
+import {AiFillCheckCircle } from "react-icons/ai";
 import { AiFillWarning } from "react-icons/ai";
-import {SignContainer,Sign,Heading,FormStyle,FulName,LabelStylePhone ,InputText,LabelContry ,SignLink,Label,ColHalf,AlreadyAcouuntSpan,ButtonPargStyle ,InputStyle,LabelStyle,ButtonStyle  }from './RegisterStyle.js'
-const Register = ({validatePassword}) => {
-  const errRef = useRef();
+
+
+import Brand from "../Brand/Brand";
+import Footer from "../Footer/Footer";
+
+import SignIn from "../Sign-up/SignIn";
+
+import {SignContainer,Sign,Heading,FormStyle,FulName,LabelStylePhone,Select ,CorrectStyle,DangerStyle,InputText,LablCountry, Icon,SignLink,Label,ColHalf,AlreadyAcouuntSpan,ButtonPargStyle ,InputStyle,LabelStyle,ButtonStyle  }from './RegisterStyle.js'
+
+
+const Register = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
     reset,
     trigger,
   } = useForm();
-  
-  const [value, setValue] = useState( "");
-  const [phone, setPhone] = useState('')
-  const options = useMemo(() => countryList().getData(), [])
-  const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState(false);
+  const [showResults, setShowResults] = useState(true);
+  const [phone, setPhone] = useState('');
+  const [value, setValue] = useState("");
   const [password,setPassword]=useState('');
-  const [hidePassword, setHidePassword] = useState(true);
-const [email, setEmail] = useState("");;
-const changeHandler = value => {
-  setValue(value)
-}
-const onSubmit = async (data) => {
-  if (!email || !password) {
-    setErrMsg("Invalid Entry");
-    return;
-}
-  // reset(); //clear value
-  const USER_API_URL = "https://talents-valley.herokuapp.com/api/user/signup";
-  const formData = new FormData();
-formData.append("email", "heba.test@gmail.com");
-formData.append("password", "Alex Banks");
-try {
-  const response = await axios.post(USER_API_URL,
-      JSON.stringify({ email, password }),
-      {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true
-      }
-  );
-  console.log(response?.data);
-  console.log(response?.accessToken);
-  console.log(JSON.stringify(response))
-  setSuccess(true);
-  //clear state and controlled inputs
-  //need value attrib on inputs for this
-  setEmail('');
-  setPassword('');
- 
-} catch (err) {
-  if (!err?.response) {
-      setErrMsg('No Server Response');
-  } else if (err.response?.status === 409) {
-      setErrMsg('Username Taken');
-  } else {
-      setErrMsg('Registration Failed')
+  const[country,setCountry]=useState('');
+  const [data,setData] = useState({
+    firstName:"",
+    lastName:"",
+    email:"",
+    password:"",
+    phone:"",
+    select:"",
+
+});
+
+  function valid(){
+    var regularExpression  = /[a-zA-Z0-9!@#$%^&*]{2,16}$/;
+    if(regularExpression.test(password)) {
+      return "Nice Work. This is excellent password"  
+  }else{
+    return
   }
-  errRef.current.focus();
-}
-// axios.post(USER_API_URL, {
-//     method: "POST",
-//     headers: {
-//     "Content-Type": "application/json",
-//     },  
-//     body: JSON.stringify({
-//       email: data.email,
-//       password: data.Password,
-//       formData
-//     }),
+  }
 
-//   }).then((response)=>{
-//     if (response.status === 200) {
-//            const data_ = JSON.parse(response);
-//          console.log( data_.data,"data")
-//          localStorage.setItem("accessToken", data_.data);
-//          localStorage.setItem("jwt",response.token); //store in local
-//      } else if(response.data === 'SUCCESS') {
-//       console.log("sucess");
-//            } else if(response.data === 'FAILURE') {
-//             console.log("failer");
-//            }})
-//            .catch(error =>
-//             {
-//                 console.log('error', error);
-//                 return error;
-//             });
+ 
 
- }
+  const onClick = () =>setShowResults(false);
 
 
   
+  const onSubmit = async (e,data) => {
+    e.preventData();
+    console.log(data);
+    const USER_API_URL =  "https://talents-valley.herokuapp.com/api/user/signup";
+    await axios.post(USER_API_URL ,{
+      headers: {
+        'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({
+          firstName:data.firstName,
+          lastName:data.lastName,
+      email: data.email,
+      password: data.Password,
+      phone:data.phone,
+      select: data.select,
+    
+    }),
 
-
+    })
+      .then(data => data.json())
+   .then((res)=>{
+           if(res.data === 'SUCCESS') {
+            alert("Login Successful!");
+           } else if(res.data === 'FAILURE') {
+            alert("Login Failed!");
+           }})
+           
+           .catch((error) => {
+            console.log(error);
+          });
+           reset(); 
+       
+    }
+  
+   
+  
 
   return (
     <>
@@ -121,27 +109,30 @@ try {
           <Label>
             First Name
           </Label>
-          <InputText type="text"       name="FirstName"
+          
+          <InputText type="text"      
+           name="firstName"
                   id="FirstName"
                   placeholder=" Enter First Name"
-                  {...register("firstName", {
-                    required: "firstName is required",
-                  })}
-                  className={`form-control ${errors.name && "invalid"}`} />
+                  {...register("firstName", { required: true, maxLength: 10 })}
+                  className={`form-control ${errors.firstName ? "borderRed":"" }`} />
+                  {errors.firstName && <DangerStyle>Incorrect First Name</DangerStyle>}
         </ColHalf>
     
         <ColHalf >
           <Label>
             Last Name
           </Label>
-          <InputText type="text"    id="LastName"
-                  name="LastName"
-                  placeholder="Enter Last Name"
+          <InputText type="text"    
+          id="LastName"
+          firstNamename="LastName"
+        placeholder="Enter Last Name"
              
                   {...register("lastName", {
                     required: "lastName is required",
                   })}
-                  className={`form-control ${errors.name && "invalid"}`}/>
+                  className={`form-control ${errors.lastName && "invalid"}`}/>
+                  {errors.lastName && <DangerStyle>Incorrect First Name</DangerStyle>}
         </ColHalf>
         </FulName>
 
@@ -162,7 +153,7 @@ try {
                   className={`form-control ${errors.email && "invalid"}`}
               />
               {errors.email && (
-                <small className="text-danger"><AiFillWarning/> {errors.email.message}</small>
+                <DangerStyle><AiFillWarning/> {errors.email.message}</DangerStyle>
               )}
             
             </>
@@ -182,36 +173,24 @@ try {
                       value: 10,
                       message: "Maximum allowed password is 10",
                     },
-                    // pattern: {
-                    //   value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%])/i,
-                    //   message: "Incorrect password",
-                    // }
+                     pattern: {
+                      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%])/i,
+                      message: "week",
+                   }
                    
                    } )}
-                   onKeyUp={() => {
-                  trigger("password");// underline red
-                }}
+                
                  className={`form-control ${errors.password && "invalid"}`}
+                 onClick={onClick}
                  
               />
+              
+              { showResults ? <Icon> <FaEyeSlash/></Icon>  : null }
               {errors.password && (
-                <small className="text-danger"><AiFillWarning/> {errors.password.message}</small>
-              )}
+                <DangerStyle><AiFillWarning/> {errors.password.message}</DangerStyle>
+               )} 
+             
             
-              <a
-              href="#"
-              className="toggle-btn"
-              onClick={() => {
-                setHidePassword(!hidePassword);
-              }}
-            >
-              <span
-                className="material-icons eye-icon"
-                style={{ color: !hidePassword ? "#FF0054" : "#c3c3c3" }}
-              >
-               
-              </span>
-            </a>
             </>
 
             <>
@@ -223,23 +202,36 @@ try {
                 value={phone}
                 id="phone"
                 name="phone"
+                style={{with:380}}
                 {...register("phone", {
                   required:  "Incorrect phone" 
                })}
-               style={{width: '980px'}}
+               className={`form-control ${errors.phone && "invalid"}`}
               />
          
               {errors.phone && (
-                <small className="text-danger"><AiFillWarning/> {errors.phone.message}</small>
+                <DangerStyle><AiFillWarning/> {errors.phone.message}</DangerStyle>
               )}
             </>
             <>
-              <LabelContry  >Country</LabelContry>
-              <Select options={options} value={value} onChange={changeHandler} placeholder="" />
-             
-           
-             {errors.name && (
-              <small className="text-danger">Incorrect Country</small>
+            <LablCountry>Country</LablCountry>
+              <Select
+              value={country}
+              name="select"
+              id="select"
+              onChange={event => setCountry(event.target.value || undefined)}   placeholder="">
+              <option value=""
+              >
+                {en[""]}
+              </option>
+              {getCountries().map((country) => (
+                <option key={country} value={en[country]}>
+                  {en[country]} +{getCountryCallingCode(country)}
+                </option>
+              ))}
+            </Select>
+             {errors.select && (
+              <DangerStyle>Incorrect Country</DangerStyle>
             )}
             </>
             <ButtonStyle  type="submit">
@@ -259,42 +251,10 @@ try {
       <Footer />
     </>
   );
-};
+
+}
+
 
 export default Register;
-// <FulName >
-//   <ColHalf>
-//     <InputField>
-//       <Label htmlFor="FirstName">First Name </Label>
-//       <input
-//         type="text"
-//   
-
-//       />
-//       {errors.name && (
-//         <small className="text-danger">
-//           {" "}
-//           {errors.name.message}{" "}
-//         </small>
-//       )}
-//     </InputField>
-//   </ColHalf>
-//   <ColHalf>
-//     <InputField>
-//       {" "}
-//       <label htmlFor="LastName">
-//         Last Name
-//       </label>
-//       <input
-//         type="text"
-//     
-
-//       />
-//       {errors.name && (
-//         <small className="text-danger">
-//           {errors.name.message}{" "}
-//         </small>
-//       )}
-//     </InputField>
-//   </ColHalf>
-// </FulName>
+//  {password.includes(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%])/i)&&(<CorrectStyle>{password}</CorrectStyle>)}
+/*  <CorrectStyle><AiFillCheckCircle/> {valid}</CorrectStyle>  */
