@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 export const LoginContainer = styled.div`
 max-width: 703px;
-min-height: 821px;
-padding: 7% 0 0;
+min-height: 841px;
+padding: 6% 0 0;
 margin: auto; 
 justify-content: flex-start;
 flex-direction: column;
@@ -15,18 +15,19 @@ background: #FFFFFF;
     max-width: 360px;
     margin: 0 auto 100px;
     padding: 5px 40px;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+   
+box-shadow: 0px 3px 6px #00000029;
     margin-top: -31px;
     margin-bottom: 26px;
 
 `;
 export const Heading = styled.h4`
 margin-top: 30px;
-font-size: 14px;
-font-weight: Semibold;
-font-family:  "Segoe UI";
+font-size: 18px;
 text-transform: capitalize;
-
+width: 258px;
+height:25 ;
+font: normal normal 600 19px/25px Segoe UI;
 `;
 export const FormStyle = styled.form`
 display: flex;
@@ -40,8 +41,8 @@ position: relative;
 export const InputStyle1 = styled.input`
 font-family: 'Segoe UI';
   padding: .77rem;
-  border-radius: 5px;
-  border: 1px solid  rgb(175, 172, 172);
+  border-radius: 7px;
+  border: 1px solid  #BEC2C6;
   margin-top: -5px;
   margin-bottom: 15px;
   width: 330px;
@@ -59,19 +60,19 @@ font-family: 'Segoe UI';
 export const LabelStyle = styled.label`
 font-weight: Semibold;
 font-size: 12px;
-color:#707070; 
+color:##707070; 
 border: #707070; 
 margin-bottom: 15px;
 margin-top: 15px;
 `;
 export const ButtonStyle = styled.button `
-background-color:#4375FF;
+background: #4375FF 0% 0% no-repeat padding-box;
+border-radius: 7px;
 cursor: pointer;
 font-weight: bold;
 width: 360px;
 height: 40px;
 margin-top: 1rem;
-border-radius: 5px;
 border: 1px solid #4375FF;
 `;
 export const ButtonPargStyle = styled.p`
@@ -91,11 +92,11 @@ color :red;
 `;
 export const DAcount = styled.p`
 text-align: center;
-margin-top: 2rem;
+margin-top: 10px;
 color:  #666;
 font-size: 12px;
-margin-bottom:40px ;
 
+margin-bottom: 30px;
 
 `;
 export const ALinks= styled.a`
@@ -111,7 +112,7 @@ color: red;
 export const ForgetPassword= styled.p`
  text-align: right;
     cursor: pointer;
-     color:  #666;
+     color:  #707070;
     font-size: 12px;
     border-radius: 5px;
     margin-top: -10px;
@@ -129,9 +130,11 @@ export const Icon= styled.p`
 
   font-size: 18px;
   position: absolute;
-  color:#00000029; 
+  color:#000000;
   padding-left: 320px;
   margin-top: -10px;
+  width:20px;
+  height: 18px;
 `;
 
 

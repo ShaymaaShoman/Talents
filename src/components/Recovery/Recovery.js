@@ -5,54 +5,61 @@ import { AiFillWarning } from "react-icons/ai";
 import { Link ,useNavigate  } from "react-router-dom";
 import { MdArrowBackIosNew} from "react-icons/md";
 import { useForm } from "react-hook-form";
-import {RecoveryContainer,Recoveryed ,Heading,BackStyle,ForgetEmail,ForgetPargraf,FormStyle,LabelStyle,InputEmailStyle,ButtonStyle,ButtonPargStyle}from './RecoveryEmStyle.js'
+import axios from "axios";
+import {RecoveryContainer,Recoveryed ,Heading,BackStyle,ForgetEmail,DangerStyle,ForgetPargraf,FormStyle,LabelStyle,InputEmailStyle,ButtonStyle,ButtonPargStyle}from './RecoveryEmStyle.js'
 const Recovery = () => {
   const navigate =useNavigate();
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
     reset,
     trigger,
   } = useForm();
-  const onSubmit = async (e) => {
-    reset();
+  const[email,setEmail]=useState("");
+  const[error,setError]=useState("");
+  const[err,setErr]=useState(false);
+  const OpenBox=(id)=>{
+if(email !== ""){
+    setErr(true);
+    navigate("/RecoveryBox");
+
 }
-//   async function ForgetEmail(){
-//     console.warn(values);
-//     let item= {values};
-//   let resp =  await  fetch("https://talents-valley.herokuapp.com/api/user/password/forgot",{
-//     body: JSON.stringify(item.json()),
-//     method:'POSt',
-//     headers:{
-//       "Content-Type":"application/json",
-//       "Accept":"application/json",
-//     },
-//     body: JSON.stringify(item)
-//   }).then(response => {
-//     response.json();
-//     console.log(response);
-//     if(response.status === 200){
-//      console.log("SUCCESSS")
-//      return response.json();     
-//  }else if(response.status === 408){
-//      console.log("SOMETHING WENT WRONG")
-//      this.setState({ requestFailed: true })
-//  }
-//  localStorage.setItem("jwt",response.token);
-//    localStorage.setItem("user-info", JSON.stringify(response.user));
-// }).catch(function (error) {
-//  if (error.response.status === 401) {
-//    throw error;
-//  }  
-// });}
+  }
+  const onSubmit = async (data) => {
+    console.log(data);
+    try {
+        const USER_API_URL =  "https://talents-valley.herokuapp.com/api/user/password/forgot";
+      const response = await axios.post(USER_API_URL
+      ,
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+          email: data.email,
+        }
+      ) ;
+      console.log(navigate('/RecoveryBox',localStorage.setItem("TestID", JSON.stringify(response?.data._id))));
+    } catch (error) {
+      console.log( error);
+
+      if (!error?.response) {
+        setError("No Server Response");
+      } else if (error.response?.status === 400 && error.response?.status === 408) {
+        setError(error.response.data.message);
+      } else {
+        setError("Email Failed");
+      }
+    }
+
+ reset();
+}
+
   return (
     <>
       <RecoveryContainer>
         <Recoveryed >
           <Brand />
-          <BackStyle onClick={()=>navigate("/SignIn",{replace:true})}><MdArrowBackIosNew/></BackStyle>
+          <BackStyle onClick={()=>navigate("/",{replace:true})}><MdArrowBackIosNew/></BackStyle>
           <ForgetEmail>
             <Heading>Forget Password ?</Heading>
             <ForgetPargraf>We'll send a code to your email to reset your password</ForgetPargraf>
@@ -73,16 +80,16 @@ const Recovery = () => {
              onKeyUp={() => {
                trigger("email");
              }}
-             className={`form-control ${errors.email && "invalid"}`}
+             className={`form-control ${errors.email && "invalid1"}`}
          />
          {errors.email && (
-           <small className="text-danger"><AiFillWarning/> {errors.email.message}</small>
+           <DangerStyle><AiFillWarning/> {errors.email.message}</DangerStyle>
          )}
         </>
-
-            <Link to="/RecoveryBox">
-              <ButtonStyle> <ButtonPargStyle>Send Code</ButtonPargStyle></ButtonStyle>
-            </Link>
+        <Link to="/RecoveryBox" state={{id:"navvv"}}></Link>
+   <ButtonStyle onClick={OpenBox}> <ButtonPargStyle>Send Code</ButtonPargStyle></ButtonStyle>
+              
+   <p style={{ color: "red", fontSize: "18px" }}>{error}</p>
           </FormStyle>
         </Recoveryed >
       </RecoveryContainer>

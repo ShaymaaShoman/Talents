@@ -15,7 +15,7 @@ border-radius: 10px;
 max-width: 360px;
 margin: 0 auto 100px;
 padding: 40px 40px;
-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+box-shadow: 0px 3px 6px #00000029;
 `;
 export const  PasswordRest = styled.section`
 text-align: center;
@@ -60,8 +60,8 @@ export const ButtonStyle = styled.button `
 background-color:#4375FF;
 cursor: pointer;
 font-weight: bold;
-width: 310px;
-height: 40px;
+width: 330px;
+height: 50px;
 margin-top: 13
 border: 1px solid #4375FF;
 border-radius: 5px;

@@ -1,6 +1,6 @@
 
 
-
+/* 
    .react-tel-input .form-control {
     width: 350px !important; 
     height: 40px !important;
@@ -9,4 +9,47 @@
    .css-1s2u09g-control {
     width: 350px;
 
-   }
+   }*/
+
+ .invalid{
+  border: 1px solid #F50000;
+ 
+}
+.form-control{
+  border: 1px solid #F50000;
+ color: #000000;
+} 
+
+.PhoneInputInput{
+  border: 1px solid #BEC2C6;
+  padding: 5px;
+  border-radius:0rem 0.375rem 0.375rem 0rem;
+  height:25px;
+ 
+}
+
+.PhoneInputCountry{
+  border: 1px solid #BEC2C6;
+  margin-right:0px;
+  padding: 5px;
+  border-radius:0.375rem 0rem  0rem 0.375rem ;
+}
+.PhoneInputCountrySelectArrow{
+  visibility: hidden;
+}
+.PhoneInputInput{
+  width: 440px;
+}
+input[type="tel"] {
+  width: 440px;
+}
+#check0{
+  font-size: 12px;
+  margin-top: -15px;
+  margin-bottom: 20px;
+}
+.check1,.check2,.check3,.check4{
+ color: #A6A0A0;
+ background-color: #f0efef;
+
+}

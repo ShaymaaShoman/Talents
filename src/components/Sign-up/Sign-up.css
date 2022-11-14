@@ -1,12 +1,4 @@
 
- 
-
-.text-danger{
-  color :red;
-  font-size: 12px;
- 
-  position: absolute;
-}
 
  .invalid{
   border: 1px solid #F50000;
@@ -15,4 +7,9 @@
 .form-control{
   border: 1px solid #F50000;
  
+}
+.error input
+{
+    border: 1px solid #eb516d;
+
 }

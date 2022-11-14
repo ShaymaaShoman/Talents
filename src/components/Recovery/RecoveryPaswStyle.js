@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const RecoveryPassContainer= styled.div`
 max-width: 703px;
-min-height: 821px;
-padding: 7% 0 0;
+min-height: 871px;
+padding: 6% 0 0;
 margin: auto; 
 justify-content: flex-start;
 flex-direction: column;
@@ -15,7 +15,7 @@ border-radius: 10px;
 max-width: 340px;
 margin: 0 auto 100px;
 padding: 40px 60px;
-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+box-shadow: 0px 3px 6px #00000029;
 `;
 export const BackStyle = styled.p`
 position: absolute; 
@@ -66,7 +66,7 @@ export const ButtonStyle = styled.button `
 background-color:#4375FF;
 cursor: pointer;
 font-weight: bold;
-width: 350px;
+width: 360px;
 height: 40px;
 margin-top: 1rem;
 border-radius: 5px;
@@ -94,7 +94,7 @@ export const Icon= styled.p`
   position: absolute;
   color:#00000029;  
   padding-left: 315px;
-  margin-top: -140px;
+  margin-top: -170px;
 `;
 export const Icon1= styled.p`
 
@@ -102,5 +102,5 @@ export const Icon1= styled.p`
   position: absolute;
   color:#00000029; 
   padding-left: 315px;
-  margin-top: 60px;
+  margin-top: 30px;
 `;
