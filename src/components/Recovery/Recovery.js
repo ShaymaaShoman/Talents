@@ -28,6 +28,7 @@ if(email !== ""){
   }
   const onSubmit = async (data) => {
     console.log(data);
+    const IDTest = JSON.parse(localStorage.getItem("TestID"));
     try {
         const USER_API_URL =  "https://talents-valley.herokuapp.com/api/user/password/forgot";
       const response = await axios.post(USER_API_URL
@@ -36,6 +37,7 @@ if(email !== ""){
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
           email: data.email,
+          _id:IDTest
         }
       ) ;
       console.log(navigate('/RecoveryBox',localStorage.setItem("TestID", JSON.stringify(response?.data._id))));

@@ -51,28 +51,27 @@ const SignIn = () => {
 useEffect(()=>{
 setErrMsg('')
 },[data])
+
+  
  
+
   const onClick = () => setShowResults(false);
-  async function onSubmit(data) {
+  const onSubmit = async(data) => {
     console.log(data);
     setHome(false);
     try {
     
       const USER_API_URL = "https://talents-valley.herokuapp.com/api/user/login";
-      const response = await axios.post(USER_API_URL,
-        JSON.stringify({ data }),
-          {
-            headers: { "Content-Type": "application/json" },
+    const response = await axios.post(USER_API_URL,
+         {
+          headers: { "Content-Type": "application/json" },
         withCredentials: true,
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-             
+        email: data.email,
+        password: data.password,
           }
-      )
-    console.log(JSON.stringify(response?.data));
-
-      //console.log(JSON.stringify(response));
-      // const accessToken = response?.data?.accessToken;
-      // const roles = response?.data?.roles;
+       )
+       console.log(JSON.stringify(response?.data));
+ 
   } catch (err) {
       if (!err?.response) {
           setErrMsg('No Server Response');
@@ -82,23 +81,15 @@ setErrMsg('')
           setErrMsg('Login Failed');
       }
       errRef.current.focus();
-  }
+   }
   
-
- 
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem("accesToken")}`,
-  //       "Content-Type": "application/json",
-  //     },
-  
-      
     reset();
   }
 
   return (
     <>
       <LoginContainer>
-        {home ? (
+      {home ?   ( 
           <LoginSection>
             <Brand />
             <Heading>Login To Your Account</Heading>
@@ -183,9 +174,9 @@ setErrMsg('')
               </>
             </FormStyle>
           </LoginSection>
-        ) : (
-          navigate("/home")
-        )}
+     ) : (
+   navigate("/Home")
+   )}
       </LoginContainer>
 
       <Footer />
@@ -193,3 +184,4 @@ setErrMsg('')
   );
 };
 export default SignIn;
+ 

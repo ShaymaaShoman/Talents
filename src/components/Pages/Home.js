@@ -11,37 +11,44 @@ const Home = () => {
   const [err, setErr] = useState(false);
   const [email,setEmail]=useState("")
   const navigate = useNavigate();
- const CodeEmail =async(data)=>{
+  const onSubmit = async (e,data) => {
+    e.preventDefault();
+    console.log(data);
   try {
-    
-  const USER_API_URL = "https://talents-valley.herokuapp.com/api/user/send-code-email";
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-   }
-  const response = await axios.post(
-    USER_API_URL,
-    {
-      headers:headers ,
-      withCredentials: true,
-    }
-  );
-  
-  console.log(JSON.stringify(response?.data));
- 
+    const IDTest = (localStorage.getItem('accessToken'));
+    const USER_API_URL ="https://talents-valley.herokuapp.com/api/user/send-code-email";
+      const headers = {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json',
+       ' Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+        
+       }
+      const response = await axios.post(
+        USER_API_URL,
+        {
+          headers:headers ,
+          withCredentials: true,
+          _id:IDTest
+        }
+      );
+  console.log(JSON.stringify(response?.data),navigate("/EmailVerif" ));
+
 }catch(error) {
   console.log( error);
   if (!error?.response) {
     setError("No Server Response");
+  } else if (error.response.status === 401) {
+      //place your reentry code
+      setError(error.response);
   } else if (error.response?.status === 400 && error.response?.status === 408) {
     setError(error.response.data.message);
   } else {
    setError("Code Failed");
   }
 
-
 }
  }
+
   return (
     <>
       <NavBar/>
@@ -56,11 +63,10 @@ const Home = () => {
               <HedingVerif>Email Address</HedingVerif>
               <Wrapp>
               <spanVerif style={{fontSize:"14px"}}>mail@email.com<VeriRed>(not verified)</VeriRed></spanVerif>
-              <Link to="/EmailVerif">
-              <Verify onClick={CodeEmail}>
+              <Verify onClick={onSubmit}>
               Verifiy
               </Verify>
-              </Link>
+          
               </Wrapp>
               </Box1>
               <Box1>  
@@ -109,7 +115,3 @@ const Home = () => {
 }
 
 export default Home;
-
-
-//  <Boxses/>
-//  
