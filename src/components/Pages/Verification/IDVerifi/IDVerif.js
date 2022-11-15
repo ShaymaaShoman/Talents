@@ -46,7 +46,7 @@ const IDVerif = () => {
      <IDVerifContainer>
      <IDVerifSection>
      <VerfiHeading > ID Verification</VerfiHeading>
-     <ImgID src={IDImg} alt="IDImg"/>
+	 <ImgID src={IDImg} alt="IDImg"/>
      <VerfiPargraf>Upload Document That Proof Your Identity Such As: <br/>
      <VerfiParg>Identity  Card, Passport, Driver License</VerfiParg></VerfiPargraf>
      <LabelStyle> Document Type </LabelStyle>
@@ -60,7 +60,7 @@ const IDVerif = () => {
 <InputStyle1 type="number"/>
 <FileUpload accept=".jpg,.png,.jpeg"
 multiple updateFilesCb={updateUploadedFiles}/>
-<ButtonVerifi title="Continue" style={{marginTop:"40px"}} onClick={handleSubmission}>Continue</ButtonVerifi>
+	 <ButtonVerifi title="Continue" onClick={handleSubmission}>Continue</ButtonVerifi>
      </IDVerifSection>
      </IDVerifContainer>
      <Footer/>

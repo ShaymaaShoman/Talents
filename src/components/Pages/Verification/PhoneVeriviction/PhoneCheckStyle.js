@@ -15,7 +15,7 @@ background: #FFFFFF;
 box-shadow: 0px 3px 6px #00000029;
     margin-top: -31px;
     margin-bottom: 20px;
-    padding: 10px 0px ;
+    padding: 30px 0px ;
     min-height: 500px;
 `;
 export const VerfiHeading= styled.span`

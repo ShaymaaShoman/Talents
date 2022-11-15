@@ -9,14 +9,14 @@ export const FileUploadContainer = styled.section`
   align-items: center;
   background-color: white;
   cursor: pointer;
-  margin-left: 50px;
-  margin-right: 55px;
+  margin-left: 60px;
+  margin-right: 65px;
 `;
 
 export const FormField = styled.input`
   font-size: 14px;
   display: block;
-  width: 100%;
+  width: 70%;
   border: none;
   text-transform: none;
   position: absolute;
@@ -54,7 +54,7 @@ cursor: pointer;
   cursor: pointer;
   font-size: 1rem;
   line-height: 1;
-  padding: 1.1em 2.8em;
+  padding: 1.1em 2em;
   text-align: center;
   text-transform: uppercase;
   font-weight: 700;

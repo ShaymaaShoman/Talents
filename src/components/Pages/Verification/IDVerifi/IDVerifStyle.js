@@ -14,7 +14,8 @@ background: #FFFFFF;
 box-shadow: 0px 3px 6px #00000029;
     margin-top: -31px;
     margin-bottom: 20px;
-    padding: 1px 0px ;
+    padding: 20px 0px ;
+
 `;
 export const VerfiHeading= styled.span`
 text-align: center;
@@ -34,7 +35,7 @@ padding-bottom: 5px;
 `;
 export const VerfiPargraf= styled.p`
 text-align: left;
-margin-left: 50px;
+margin-left: 60px;
 font-size:15px;
 color: #707070;
 margin-top: 5px;
@@ -54,7 +55,7 @@ margin-bottom: 15px;
 margin-top: 10px;
 display: block;
 text-align: left;
-margin-left: 50px;
+margin-left: 60px;
 `;
 export const InputStyle1 = styled.input`
 font-family: 'Segoe UI';
@@ -63,10 +64,10 @@ font-family: 'Segoe UI';
   border: 1px solid  #BEC2C6;
   margin-top: -5px;
   margin-bottom: 30px;
-  width: 420px;
+  width: 400px;
   height: 30px;
   display: block;
-  margin-left: 50px;
+  margin-left: 60px;
 
 `;
 export const InputFile = styled.input`
@@ -75,10 +76,10 @@ font-family: 'Segoe UI';
   border-radius: 7px;
   border: 1px solid  #BEC2C6;
   margin-top: -5px;
-  width: 420px;
+  width: 400px;
   height: 30px;
   display: block;
-  margin-left: 50px;
+  margin-left: 60px;
 
 `;
 
@@ -89,10 +90,10 @@ font-family: 'Segoe UI';
   border: 1px solid  #BEC2C6;
   margin-top: -5px;
   margin-bottom: 5px;
-  width: 445px;
+  width: 425px;
   height: 60px;
   display: block;
-  margin-left: 50px;
+  margin-left: 60px;
 
 
 `;
@@ -100,5 +101,6 @@ export const BtnFile = styled.button`
 
 text-align:center;
 margin-left: 200px;
+
 `;
 

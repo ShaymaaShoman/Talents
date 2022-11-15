@@ -10,7 +10,7 @@ import en from "react-phone-number-input/locale/en.json";
 import address from '../../../../assest/address.png'
 import {AddresVerifContainer,AddresVerifSection,VerfiHeading,AddressPargraf,AddressiParg,Space,Select,FulNameAdress,LablCountry,InputText,ColHalf,ImgID,LabelAddres,LabelStyle,InputSelect,FulName
 }from './AddressVerificationStyle.js'
-import ButtonTest from '../../Button/ButtonTest';
+import ButtonVerifi from '../../Button/ButtonVerifi';
 const AddressVerification = () => {
   const [selectedFile, setSelectedFile] = useState();
 	const [isSelected , setIsSelected] = useState(false);
@@ -89,7 +89,7 @@ const AddressVerification = () => {
 <FileUpload accept=".jpg,.png,.jpeg"
 multiple updateFilesCb={updateUploadedFiles}/>
 <Space></Space>
-<ButtonTest  title="Continue"> Continue</ButtonTest>
+<ButtonVerifi title="Continue" style={{width:" 400px",marginLeft: "200px"}}>Continue</ButtonVerifi>
    </AddresVerifSection>
    </AddresVerifContainer>
    <Footer/>

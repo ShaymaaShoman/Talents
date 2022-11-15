@@ -62,7 +62,7 @@ export const Otp= styled.input`
 export const ContainerBox= styled.div`
 display: flex;
   width: 100%;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
    
   }
 `;
@@ -91,6 +91,6 @@ export const Resed1 = styled.p`
 text-align: center;
 font-size: 14px;
 margin-top: 5px;
-margin-bottom: 40px;
+margin-bottom: 30px;
 
 `;

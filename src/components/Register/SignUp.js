@@ -144,7 +144,6 @@ const SignUp = () => {
     .then((acualData)=>{
       localStorage.setItem('accessToken',acualData.data.accessToken);
       localStorage.setItem('refreshToken',acualData.data.refreshToken);
-   
     }).catch((error) => {
         console.log(error);
           if (!error?.response) {
