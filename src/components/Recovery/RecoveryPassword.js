@@ -69,7 +69,7 @@ const handleSubmit= async(e,data)=>{
   console.log(state.password,state.cPassword);
    
     try {
-      const USER_API_URL = "https://talents-valley.herokuapp.com/api/user/password/recover";
+      const USER_API_URL = "https://talents-valley-backend.herokuapp.com/api/user/password/recover";
     const response = await axios.post(USER_API_URL,
       {
         headers: { "Content-Type": "application/json" },

@@ -48,7 +48,7 @@ const RecoveryBox = () => {
      }
      try {
       const IDTest = JSON.parse(localStorage.getItem("TestID"));
-      const USER_API_URL = "https://talents-valley.herokuapp.com/api/user/password/verify-code";
+      const USER_API_URL = "https://talents-valley-backend.herokuapp.com/api/user/password/verify-code";
       const response = await axios.post(
         USER_API_URL,
         {

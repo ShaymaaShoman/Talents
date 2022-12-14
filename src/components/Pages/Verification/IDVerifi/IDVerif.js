@@ -1,45 +1,63 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import Footer from '../../../Footer/Footer';
 import NavBar from '../../../NavBar/NavBar';
 import IDImg from '../../../../assest/ID.png'
-import {IDVerifContainer,IDVerifSection,VerfiHeading,ImgID,VerfiPargraf,VerfiParg,LabelStyle,BtnFile ,InputFile,InputStyle1,InputSelect } from './IDVerifStyle.js'
- import ButtonVerifi from '../../Button/ButtonVerifi';
-import FileUpload from './FileUpload';
+import {IDVerifContainer,IDVerifSection,DangerStyle,Option,VerfiHeading,ImgID,VerfiPargraf,FormStyle,VerfiParg,BtnVerfi,LabelStyle,BtnFile ,InputFile,InputStyle1,InputSelect } from './IDVerifStyle.js'
+ import BtnVerf from '../../Button/ButtonVerifi'
+ import axios from 'axios';
+ import { AiFillWarning } from "react-icons/ai";
+ import './File.css'
+import FileUplod from './FileUplod.js'
+import { Link, useNavigate  } from 'react-router-dom';
+import { Context } from "../../../Context/Context.js"
 const IDVerif = () => {
-    const [selectedFile, setSelectedFile] = useState();
-	const [isSelected , setIsSelected] = useState(false);
-	const [newUserInfo, setNewUserInfo] = useState({
-		profileImages: []
-	  });
-    const changeHandler = (event) => {
-		setSelectedFile(event.target.files[0]);
-		setIsSelected(true);
-	};
-	
-	const updateUploadedFiles = (files) =>
-    setNewUserInfo({ ...newUserInfo, profileImages: files });
-    const handleSubmission = () => {
-		const formData = new FormData();
+    const { selectedFile,file} = useContext(Context);
+	const [values, setValues] = useState("");
+	const [identif, setIdentif] = useState("");
+	const [isDisabled, setIsDisabled] = useState(true);
+	const [error, setError] = useState([]);
+	const navigate = useNavigate();
+	const handleClick = () => {
+		setIdentif(!identif);
+		// if(value==""||null){
+		// 	setErrors("this field reqiuerd");
+			
+		// }
+		}
+		const [input, setInput] = useState("");
+const handleSubmit =async(e,data)=>{
+	e.preventDefault();
+	const IDTest = JSON.parse(localStorage.getItem("TestID"));
+	if(values&&selectedFile&&identif){
+		navigate("/Home" );
+	}
+	const formData = new FormData();
+	formData.append('idNumber', values);
+	formData.append('idDocumentType', input);
+	console.log(data);
+	  const USER_API_URL = "https://talents-valley-backend.herokuapp.com/api/user/verify/id";
+	  await fetch(USER_API_URL, {
+		method: "POST",
+		headers: { 
+		 "Content-Type": "application/json",
+		Authorization: `Bearer ${localStorage.getItem("TestID")}`,   
+		},
+		body: JSON.stringify({
+		  withCredentials: true,
+		  formData
+		}),
+	  })
+		.then(response => response.json())
+		.then((acualData)=>{
+		 console.log(acualData);
+		 
+		}).catch((error) => {
+			console.log(error);  
+		  })
+		};
 
-		formData.append('File', selectedFile);
-
-		fetch(
-			'https://freeimage.host/api/1/upload?key=<YOUR_API_KEY>',
-			{
-				method: 'POST',
-				body: formData,
-			}
-		)
-			.then((response) => response.json())
-			.then((result) => {
-				console.log('Success:', result);
-			})
-			.catch((error) => {
-				console.error('Error:', error);
-			});
-	};
-	
-
+	  
+	 
   return (
     <>
      <NavBar/>
@@ -49,18 +67,44 @@ const IDVerif = () => {
 	 <ImgID src={IDImg} alt="IDImg"/>
      <VerfiPargraf>Upload Document That Proof Your Identity Such As: <br/>
      <VerfiParg>Identity  Card, Passport, Driver License</VerfiParg></VerfiPargraf>
-     <LabelStyle> Document Type </LabelStyle>
-     <InputSelect >
-     <option value="N/A"></option>
-    <option value="N/A">Identity Card</option>
-    <option value="1">Passport</option>
-    <option value="2">Driver License</option>
-</InputSelect>
-<LabelStyle> ID Number </LabelStyle>
-<InputStyle1 type="number"/>
-<FileUpload accept=".jpg,.png,.jpeg"
-multiple updateFilesCb={updateUploadedFiles}/>
-	 <ButtonVerifi title="Continue" onClick={handleSubmission}>Continue</ButtonVerifi>
+	 <FormStyle onSubmit={handleSubmit}>
+	 <>
+	 <LabelStyle> Document Type </LabelStyle>
+	
+	
+	 <InputSelect onChange={(e) => 
+		  setInput(e.target.value )}
+	  >
+	   <Option key="blankKey" hidden value >
+	 Choose your document type
+	 </Option>
+	 
+	   <option key="Identity Card" value="Identity Card">Identity Card</option>
+	   <option key="Passport" value="Passport">Passport</option>
+	   <option key="Driver License" value="Driver License">Driver License</option>
+	 </InputSelect>
+	 
+     </>
+		   <>
+		   <LabelStyle> ID Number </LabelStyle>
+		   <InputStyle1 
+		   type="text"
+		   name="number"
+		    placeholder="Enter your ID number"
+		   id="number"
+		   onClick={handleClick}
+		   className={error.includes("number") ? "error" : ""}
+		   value={values} onChange={(e)=>setValues(e.target.value)}
+		 />
+	
+		   </>
+		<FileUplod />
+
+	    <BtnVerfi type="submit" onClick={handleSubmit}  disabled={!selectedFile&&!values&&!identif}>Continue
+	   </BtnVerfi>
+	 
+	
+   </FormStyle>
      </IDVerifSection>
      </IDVerifContainer>
      <Footer/>
@@ -69,20 +113,10 @@ multiple updateFilesCb={updateUploadedFiles}/>
 }
 
 export default IDVerif;
-// <BtnFile>
-// Upload a File
-// </BtnFile>
-// <InputFile type="file" name="file" onChange={changeHandler} style={{ display:"none"}} />
-// {isSelected ? (
-// 				<div>
-// 					<p>Filename: {selectedFile.name}</p>
-// 					<p>Filetype: {selectedFile.type}</p>
-// 					<p>Size in bytes: {selectedFile.size}</p>
-// 					<p>
-// 						lastModifiedDate:{' '}
-// 						{selectedFile.lastModifiedDate.toLocaleDateString()}
-// 					</p>
-// 				</div>
-// 			) : (
-// 				<p></p>
-// 			)}
+// 	 {errors?<DangerStyle> {errors}</DangerStyle>:""}
+//  <InputSelect
+	//  id="select"
+	//    name="select"
+	//    value={value}
+	 
+	//  >

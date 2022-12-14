@@ -7,6 +7,7 @@ import axios from 'axios';
 import {EmailContainer,Otp, EmailSection,VerfiHeading,Resed1,VerfiPargraf,VerfiParg,VerfiImg,ContainerBox,FormStyle,ResendLink1} from './EmailVerifStyle.js'
 
 import { Link, useNavigate  } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 const EmailVerif = () => {
@@ -39,6 +40,9 @@ const inputfocus = (elmnt) => {
   //       navigate("/emailVerfiChek" );
   //   }
 // }
+useEffect(()=>{
+  
+})
   const handleSubmit = async(e,da)=> {
     e.preventDefault();
     console.log(useInput);
@@ -48,38 +52,26 @@ const inputfocus = (elmnt) => {
         setErr(true);
         navigate("/emailVerfiChek" );
        }
-    try {
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-       }
-    const USER_API_URL = "https://talents-valley.herokuapp.com/api/user/verify/email";
-    const response = await axios.post(
-      USER_API_URL,
-      {
-        headers:headers ,
-        withCredentials: true,
+    const USER_API_URL = "https://talents-valley-backend.herokuapp.com/api/user/verify/email";
+    await fetch(USER_API_URL, {
+      method: "POST",
+      headers: { 
+       "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,   
+      },
+      body: JSON.stringify({
         verificationCode:result,
-         
-      }
-    );
-
-    console.log(JSON.stringify(response?.data), navigate("/emailVerfiChek" ));
-   
-  }catch(error) {
-    console.log( error);
-    if (!error?.response) {
-      setError("No Server Response");
-    } else if (error.response?.status === 400 && error.response?.status === 408) {
-      setError(error.response.data.message);
-    } else {
-     setError("Code Failed");
-    }
-
+        withCredentials: true,
+      }),
+    })
+      .then(response => response.json())
+      .then((acualData)=>{
+       navigate("/emailVerfiChek" );
+      }).catch((error) => {
+          console.log(error);  
+        })
+      };
  
-}
-  }
-
 
   return (
     <div>

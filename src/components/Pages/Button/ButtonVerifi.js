@@ -19,6 +19,7 @@ margin-top: 40px;
 margin-bottom:10px ;
 `;
 const ButtonVerifi = ({children}) => {
+
   return <Btn type="submit">{children}</Btn>;
 }
 

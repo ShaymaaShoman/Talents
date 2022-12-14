@@ -6,6 +6,7 @@ import axios from 'axios';
 import {PhoneContainer,PhoneSection,VerfiHeading,VerfiParg,VerfiPargraf,ImgPhoneCheck ,FormStyle,Resed1,ContainerBox,Otp ,ResendLink1} from './PhoneVerifiStyle.js';
 import ButtonVerifi from '../../Button/ButtonVerifi';
 import { Link, useNavigate  } from 'react-router-dom';
+import { useEffect } from 'react';
 const PhoneVerifi = () => {
   const [inputs, setInputs] = useState({});
   const useInput=[inputs.otp1,inputs.otp2,inputs.otp3,inputs.otp4,inputs.otp5,inputs.otp6];
@@ -29,12 +30,20 @@ const PhoneVerifi = () => {
     
     }
   };
+  const reg = /\d\d\d\d\d\d\d\d/
+  const userData=localStorage.getItem('user');
+  const testUserData =JSON.parse(userData);
+const mobile =testUserData.mobile;
+const  mobileFormate= mobile.replace(reg,"********");
     // const OpenBox=(id)=>{
     //   if(useInput !== ""){
     //       setErr(true);
     //       navigate("/emailVerfiChek" );
     //   }
   // }
+  useEffect(()=>{
+
+  },[])
     const handleSubmit = async(e,da)=> {
       e.preventDefault();
       console.log(useInput);
@@ -44,37 +53,30 @@ const PhoneVerifi = () => {
           setErr(true);
           navigate("/PhoneCheck" );
          }
-      try {
-        const headers = {
-          "Content-Type": "application/json",
-          'Authorization': `Token window.localStorage.getItem("accessToken")`
-         }
-      const USER_API_URL = "https://talents-valley.herokuapp.com/api/user/verify/id";
-      const response = await axios.post(
-        USER_API_URL,
-        {
-          headers:headers ,
-          withCredentials: true,
+      const USER_API_URL = "https://talents-valley-backend.herokuapp.com/api/user/send-code-mobile";
+      await fetch(USER_API_URL, {
+        method: "POST",
+        headers: { 
+         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,   
+        },
+        body: JSON.stringify({
           verificationCode:result,
-           
-        }
-      );
+          withCredentials: true,
+        }),
+      })
+        .then(response => response.json())
+        .then((acualData)=>{
+          localStorage.getItem('user');
+          console.log(acualData.user.verifiedEmail);
+         navigate("/PhoneCheck" );
+        }).catch((error) => {
+            console.log(error);  
+          })
+        };
+
   
-      console.log(JSON.stringify(response?.data), navigate("/PhoneCheck" ));
      
-    }catch(error) {
-      console.log( error);
-      if (!error?.response) {
-        setError("No Server Response");
-      } else if (error.response?.status === 400 && error.response?.status === 408) {
-        setError(error.response.data.message);
-      } else {
-       setError("Code Failed");
-      }
-  
-   
-  }
-    }
   return (
     <>
       <NavBar/>
@@ -83,7 +85,7 @@ const PhoneVerifi = () => {
       <VerfiHeading >Phone Verification</VerfiHeading>
       <ImgPhoneCheck src ={phoneCheck} alt ="phoneCheck"/>
       <VerfiPargraf>We have sent you a verification code to your phone <br/>
- <VerfiParg>number ********** 789</VerfiParg></VerfiPargraf>
+ <VerfiParg>number {mobileFormate}</VerfiParg></VerfiPargraf>
  <FormStyle onSubmit={handleSubmit}>
  <ContainerBox>
   

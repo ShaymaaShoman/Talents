@@ -27,7 +27,7 @@ padding-top: 10px;
 export const AddressPargraf= styled.p`
 text-align: left;
 margin-left: 50px;
-font-size:18px;
+font-size:16px;
 color: #707070;
 margin-top: -1px;
 `;
@@ -63,7 +63,7 @@ font-family: 'Segoe UI';
   border: 1px solid  #BEC2C6;
   margin-top: -5px;
   margin-bottom: 1px;
-  width: 415px;
+  width: 420px;
   height: 50px;
   display: block;
   margin-left: 50px;
@@ -90,7 +90,7 @@ justify-content: space-between;
 `;
 export const InputText  = styled.input`
 text-align: left;
-padding: 15px 18px;
+padding: 15px 19px;
 font-size: 12px;
 border-radius: 5px;
 border: 1px solid  rgb(175, 172, 172);
@@ -99,8 +99,8 @@ justify-content: space-between;
 margin-top: 20px;
 margin-left: 50px;
 .Address2{
-    margin-left: -20px; 
-    padding-left:-30px;
+    margin-left: -30px; 
+    padding-left:-50px;
 }
 
   
@@ -133,4 +133,25 @@ margin-bottom: 10px;
 export const Space = styled.div`
 
 margin-bottom: 20px;
+`;
+export  const BtnVerf = styled.button`
+display: block;
+margin-left: 50px;
+margin-right: auto;
+background-color:  #4375FF ;
+color: #fff;
+cursor: pointer;
+text-transform: capitalize;
+width: 435px;
+height: 60px;
+border:1px solid #A7BDFB;
+border-radius: 7px;
+font-size: 20px;
+font-weight: bold;
+margin-top: 30px;
+margin-bottom:30px ;
+`;
+export const FormStyle = styled.form`
+
+
 `;

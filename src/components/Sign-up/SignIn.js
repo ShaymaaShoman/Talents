@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 
 import { FaEyeSlash } from "react-icons/fa";
 import { AiFillWarning } from "react-icons/ai";
-import axios from "axios";
+
 import Footer from "../Footer/Footer";
 import Brand from "../Brand/Brand";
 
@@ -33,10 +33,11 @@ const SignIn = () => {
     handleSubmit,
     formState: { errors },
     reset,
-    watch,
+ 
   } = useForm();
   const [errMsg, setErrMsg] = useState('');
   const [showResults, setShowResults] = useState(true);
+  const [error, setError] = useState("");
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -52,39 +53,39 @@ useEffect(()=>{
 setErrMsg('')
 },[data])
 
-  
- 
 
   const onClick = () => setShowResults(false);
   const onSubmit = async(data) => {
     console.log(data);
     setHome(false);
-    try {
-    
-      const USER_API_URL = "https://talents-valley.herokuapp.com/api/user/login";
-    const response = await axios.post(USER_API_URL,
-         {
-          headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-        email: data.email,
+    const USER_API_URL = "https://talents-valley-backend.herokuapp.com/api/user/login";
+
+    await fetch(USER_API_URL, {
+       method: "POST",
+       headers: { "Content-Type": "application/json" },
+       body: JSON.stringify({
         password: data.password,
-          }
-       )
-       console.log(JSON.stringify(response?.data));
- 
-  } catch (err) {
-      if (!err?.response) {
-          setErrMsg('No Server Response');
-      } else if (err.response?.status === 400 && err.response?.status === 401) {
-          setErrMsg('Missing Username or Password');
-      } else {
-          setErrMsg('Login Failed');
-      }
-      errRef.current.focus();
-   }
-  
-    reset();
-  }
+        email: data.email,
+       }),
+     })
+     .then(response => response.json())
+     .then((acualData)=>{
+       localStorage.setItem('accessToken',acualData.data.accessToken);
+       localStorage.setItem('refreshToken',acualData.data.refreshToken);
+       localStorage.setItem("user",JSON.stringify(acualData.data.user));
+     }).catch((error) => {
+         console.log(error);
+           if (!error?.response) {
+             setError('No Server Response');
+         } else if (error.response?.status === 400 && error.response?.status === 401) {
+           setError('Unauthorized');
+         } else {
+           setError('Login Failed');
+          }})
+
+          reset();
+        };
+      
 
   return (
     <>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 export const IDVerifContainer = styled.div`
 max-width: 550px;
-min-height: 900px;
+min-height: 850px;
 padding: 6% 0 0;
 margin: auto; 
 justify-content: flex-start;
@@ -22,15 +22,15 @@ text-align: center;
 display: block;
 font-size:1rem;
 font: normal normal 600 30px Segoe UI;
-padding-top: 31px;
+
 
 `;
 export const ImgID= styled.img`
 align-items: center;
 margin-left: 200px;
-margin-top: 10px;
+margin-top: 5px;
 margin-left: 230px;
-padding-bottom: 5px;
+
 
 `;
 export const VerfiPargraf= styled.p`
@@ -51,7 +51,7 @@ font-weight: Semibold;
 font-size: 12px;
 color:##707070; 
 border: #707070; 
-margin-bottom: 15px;
+margin-bottom: 10px;
 margin-top: 10px;
 display: block;
 text-align: left;
@@ -63,7 +63,7 @@ font-family: 'Segoe UI';
   border-radius: 7px;
   border: 1px solid  #BEC2C6;
   margin-top: -5px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   width: 400px;
   height: 30px;
   display: block;
@@ -89,7 +89,7 @@ font-family: 'Segoe UI';
   border-radius: 7px;
   border: 1px solid  #BEC2C6;
   margin-top: -5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   width: 425px;
   height: 60px;
   display: block;
@@ -103,4 +103,51 @@ text-align:center;
 margin-left: 200px;
 
 `;
+export const FormStyle = styled.form`
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+flex-grow: 1;
+padding-bottom: 1rem;
+margin-top: -10px;
+position: relative;
 
+`;
+export  const BtnVerfi = styled.button`
+display: block;
+margin-left: 60px;
+margin-right: auto;
+background-color:  #4375FF ;
+color: #fff;
+cursor: pointer;
+text-transform: capitalize;
+width: 430px;
+height: 60px;
+border:1px solid #A7BDFB;
+border-radius: 7px;
+font-size: 20px;
+font-weight: bold;
+margin-top: 30px;
+margin-bottom:30px ;
+`;
+export  const Option = styled.option`
+color:#BEC2C6;
+`;
+export const DangerStyle = styled.small`
+color :red;
+  font-size: 12px;
+
+`;
+export const Max = styled.span`
+text-align: left; 
+justify-content: left;
+margin-top:10px;
+font-size: 10px;
+margin-left: 60px;
+`;
+export const FileError= styled.span`
+display: inline-block;
+vertical-align: top;
+margin-left: 50px;
+color: red;
+`;

@@ -1,0 +1,17 @@
+.file-remove  {
+   position: absolute;
+     top:230px;
+     right: 90px;
+ line-height: 15px;
+   cursor: pointer;
+   color: #000;
+  margin-right: -10px;
+     cursor: pointer; 
+}
+input:invalid{
+  border:1px solid #ff0000
+  }
+  .error {
+    border: 1px solid red;
+  }
+  

@@ -62,7 +62,7 @@ export const Otp= styled.input`
 export const ContainerBox= styled.div`
 display: flex;
   width: 100%;
-  padding-bottom: 4.5rem;
+  padding-bottom: 1rem;
    
   }
 `;

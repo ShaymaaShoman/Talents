@@ -72,6 +72,10 @@ export  const VeriRed = styled.span`
 color:red;
 
 `;
+export  const VeriGreen = styled.span`
+color:green;
+
+`;
 export const Wrapp = styled.div`
 display: flex;
 justify-content: space-between;
@@ -84,6 +88,30 @@ background: #4375FF;
 border: 1px solid #E2E2E2;
 border-radius: 7px;
 color:#fff;
+width:100px;
+height:25px;
+text-align: center;
+margin-top: -30px;
+margin-right: 10px;
+cursor: pointer;
+`;
+export  const VerifyPending = styled.div`
+background: #D4D4D4;
+border: 1px solid #E2E2E2;
+border-radius: 7px;
+color:#fff;
+width:100px;
+height:25px;
+text-align: center;
+margin-top: -30px;
+margin-right: 10px;
+cursor: pointer;
+`;
+export  const VerifyTry = styled.div`
+background: #FFFFFF;
+border: 1px solid #E2E2E2;
+border-radius: 7px;
+color:#4375FF;
 width:100px;
 height:25px;
 text-align: center;

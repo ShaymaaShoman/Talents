@@ -31,7 +31,6 @@ import {
   InputText,
   LablCountry,
   Icon,
-  SignLink,
   Label,
   ColHalf,
   AlreadyAcouuntSpan,
@@ -40,7 +39,7 @@ import {
   LabelStyle,
   ButtonStyle,
 } from "./RegisterStyle.js";
-import { useEffect } from "react";
+
 import { type } from "@testing-library/user-event/dist/type";
 
 const SignUp = () => {
@@ -50,7 +49,6 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
     reset,
-    trigger,
   } = useForm();
 
   const [showResults, setShowResults] = useState(true);
@@ -58,16 +56,10 @@ const SignUp = () => {
   const [value, setValue] = useState("");
   const [password, setPassword] = useState(false);
   const [country, setCountry] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
   const [err, setErr] = useState(false);
   const [error, setError] = useState("");
-  const [character, setCharacter] = useState(false);
-  const [number, setNumber] = useState(false);
-  const [special, setSpecial] = useState(false);
-  
-  var colour1=" #A6A0A0",colour2="#A6A0A0",colour3=" #A6A0A0",colour4="#A6A0A0";
+
+
   const [inputVal,setInputVal]=useState({
     charlength: false,
     specialchar: false,
@@ -123,10 +115,10 @@ const SignUp = () => {
       data.country !== ""
     ) {
       setErr(true);
-      navigate("/");
+      navigate("/Verification");
     }
     
-    const USER_API_URL = "https://talents-valley.herokuapp.com/api/user/signup";
+    const USER_API_URL = "https://talents-valley-backend.herokuapp.com/api/user/signup";
 
    await fetch(USER_API_URL, {
       method: "POST",
@@ -150,7 +142,7 @@ const SignUp = () => {
             setError('No Server Response');
         } else if (error.response?.status === 400) {
           setError('Missing Username or Password');
-        } else if (error.response?.status === 401) {
+        } else if (error.response?.status === 401 && error.response?.status === 500) {
           setError('Unauthorized');
         } else {
           setError('Login Failed');
