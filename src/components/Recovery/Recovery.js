@@ -30,7 +30,7 @@ if(email !== ""){
     console.log(data);
     const IDTest = JSON.parse(localStorage.getItem("TestID"));
     try {
-        const USER_API_URL =  "https://talents-valley-backend.herokuapp.com/api/user/password/forgot";
+        const USER_API_URL =  "https://talents-valley-backend.herokuapp.com/api/user/password/forgot?_id";
       const response = await axios.post(USER_API_URL
       ,
         {

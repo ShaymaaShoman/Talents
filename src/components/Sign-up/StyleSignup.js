@@ -148,3 +148,6 @@ export const Select= styled.p`
   font-size: 12px;
   
 `;
+export const StyleSignup = {
+  LoginContainer
+}

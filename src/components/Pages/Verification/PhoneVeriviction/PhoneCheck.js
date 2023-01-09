@@ -9,21 +9,25 @@ const PhoneCheck = () => {
   const navigate = useNavigate();
   const toggle = async(e,data)=>{
     e.preventDefault();
+    navigate("/Verification" );
     console.log(data);
-    const USER_API_URLx = "https://talents-valley-backend.herokuapp.com/api/settings/profile";
+    const USER_API_URLx ="https://talents-valley-backend.herokuapp.com/api/settings/profile";
     await fetch(USER_API_URLx, {
-      method: "Get",
+      method: "GET",
       headers: { 
        "Content-Type": "application/json",  
+       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,   
       },
       body: JSON.stringify({
       
       }),
     })
        .then(response => response.json())
-        console.log(localStorage.getItem('user'))
-        navigate("/PhoneVerifi" )
-      .catch((error) => {
+       .then((acualData)=>{
+       localStorage.setItem("user",JSON.stringify(acualData.data.user));
+       console.log(acualData);
+        navigate("/Verification");
+       }).catch((error) => {
            console.log(error); 
        })
   }
@@ -36,7 +40,7 @@ const PhoneCheck = () => {
 <ImgePhone src={checkImg} alt="Check" />
 <VerfiPargraf>Your Phone has been Verified <br/><PargSucced>Successfully</PargSucced> </VerfiPargraf>
 <Link to="/Home" >
-<ButtonVerifiy title="Continue" style={{marginTop:"40px"}} >Continue</ButtonVerifiy>
+<ButtonVerifiy title="Continue" onClick={toggle} style={{marginTop:"40px"}} >Continue</ButtonVerifiy>
 </Link  >
 </PhoneSection>
 </PhoneContainer>

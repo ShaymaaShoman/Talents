@@ -65,3 +65,23 @@ letter-spacing: 0.14px;
 margin-left: 10px;
 margin-top: 60px
 `;
+
+export const LinkInvoiceStyle = styled.section`
+  margin-top:60px;
+  margin-left:-40px;
+  ul li {
+    list-style: none;
+    margin: 10px 0;
+  }
+  ul li a {
+    font-size: 18px;
+    padding-left: 3px;
+    color: #707070;
+    border-left: 2px solid #D4D4D4;
+  }
+  ul li a:hover {
+    color: #4375FF;
+    border-left: 2px solid #4375FF;
+  }
+
+`;

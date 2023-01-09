@@ -16,6 +16,6 @@ width: 20px;
 height: 20px;
 font-size:20px;
 position: absolute;
-margin-left:120px;
+margin-left:300px;
 margin-top:10px;
 `; 

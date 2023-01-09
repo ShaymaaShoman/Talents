@@ -12,6 +12,15 @@ const PhoneVerifi = () => {
   const useInput=[inputs.otp1,inputs.otp2,inputs.otp3,inputs.otp4,inputs.otp5,inputs.otp6];
   const[error,setError]=useState("");
   const [err, setErr] = useState(false);
+const userData=localStorage.getItem("user");
+const testUserData =JSON.parse(userData);
+const mobile =testUserData.mobile;
+var start = 4;
+var end = 9;
+var substitute ="*** ***";
+ function replaceRange(mobile, start, end, substitute) {
+    return mobile.substring(0, start) + substitute + mobile.substring(end);
+  }
   const navigate = useNavigate();
   const handleChange = (val, event) => {
     setInputs({ ...inputs, [val]: event.target.value });
@@ -30,11 +39,9 @@ const PhoneVerifi = () => {
     
     }
   };
-  const reg = /\d\d\d\d\d\d\d\d/
-  const userData=localStorage.getItem('user');
-  const testUserData =JSON.parse(userData);
-const mobile =testUserData.mobile;
-const  mobileFormate= mobile.replace(reg,"********");
+
+ 
+
     // const OpenBox=(id)=>{
     //   if(useInput !== ""){
     //       setErr(true);
@@ -53,7 +60,7 @@ const  mobileFormate= mobile.replace(reg,"********");
           setErr(true);
           navigate("/PhoneCheck" );
          }
-      const USER_API_URL = "https://talents-valley-backend.herokuapp.com/api/user/send-code-mobile";
+      const USER_API_URL ="https://talents-valley-backend.herokuapp.com/api/user/verify/mobile";
       await fetch(USER_API_URL, {
         method: "POST",
         headers: { 
@@ -66,11 +73,8 @@ const  mobileFormate= mobile.replace(reg,"********");
         }),
       })
         .then(response => response.json())
-        .then((acualData)=>{
-          localStorage.getItem('user');
-          console.log(acualData.user.verifiedEmail);
-         navigate("/PhoneCheck" );
-        }).catch((error) => {
+         navigate("/PhoneCheck" )
+        .catch((error) => {
             console.log(error);  
           })
         };
@@ -85,7 +89,7 @@ const  mobileFormate= mobile.replace(reg,"********");
       <VerfiHeading >Phone Verification</VerfiHeading>
       <ImgPhoneCheck src ={phoneCheck} alt ="phoneCheck"/>
       <VerfiPargraf>We have sent you a verification code to your phone <br/>
- <VerfiParg>number {mobileFormate}</VerfiParg></VerfiPargraf>
+ <VerfiParg>number{replaceRange(mobile, start, end, substitute)} </VerfiParg></VerfiPargraf>
  <FormStyle onSubmit={handleSubmit}>
  <ContainerBox>
   

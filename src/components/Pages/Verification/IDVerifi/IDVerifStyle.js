@@ -63,7 +63,7 @@ font-family: 'Segoe UI';
   border-radius: 7px;
   border: 1px solid  #BEC2C6;
   margin-top: -5px;
-  margin-bottom: 15px;
+  margin-bottom: 3px;
   width: 400px;
   height: 30px;
   display: block;
@@ -83,20 +83,7 @@ font-family: 'Segoe UI';
 
 `;
 
-export const InputSelect = styled.select`
-font-family: 'Segoe UI';
-  padding: .77rem;
-  border-radius: 7px;
-  border: 1px solid  #BEC2C6;
-  margin-top: -5px;
-  margin-bottom: 10px;
-  width: 425px;
-  height: 60px;
-  display: block;
-  margin-left: 60px;
 
-
-`;
 export const BtnFile = styled.button`
 
 text-align:center;
@@ -113,11 +100,25 @@ margin-top: -10px;
 position: relative;
 
 `;
+
+export const InputSelect = styled.select`
+font-family: 'Segoe UI';
+  padding: .57rem;
+  border-radius: 7px;
+  border: 1px solid  #BEC2C6;
+  margin-top: -5px;
+  margin-bottom: 1px;
+  width: 425px;
+  height: 50px;
+  display: block;
+  margin-left: 60px;
+color:#BEC2C6;
+
+`;
 export  const BtnVerfi = styled.button`
 display: block;
 margin-left: 60px;
 margin-right: auto;
-background-color:  #4375FF ;
 color: #fff;
 cursor: pointer;
 text-transform: capitalize;
@@ -150,4 +151,85 @@ display: inline-block;
 vertical-align: top;
 margin-left: 50px;
 color: red;
+`;
+export const FileContainer = styled.div`
+border: 1px solid #BEC2C6;
+border-radius: 7px;
+margin: auto; 
+justify-content: flex-start;
+flex-direction: column;
+padding: .77rem;
+width: 400px;
+height: 30px;
+text-align: center;
+margin-top: 10px;
+#fileInput{
+    display: none;
+  }
+  #fileInput + label{
+    /* background-color: blue;
+    padding: 8px;
+    color: #fff;
+    cursor: pointer; */
+  }
+  #fileInput + label:hover{
+    cursor: pointer;
+    
+  }
+  span{
+    font-size:13px ;
+  }
+  background: #E2E2E2;
+`;
+export const Upload = styled.span`
+font-size: 30px;
+`;
+export const UploadSize = styled.p`
+text-align: left; 
+justify-content: left;
+margin-top:2px;
+font-size: 13px;
+margin-left: 30px;
+`;
+
+ export const UploadContain = styled.span`
+ margin-left: -300px;
+background: #E2E2E2;
+ 
+
+ `;
+ export const FileBefore = styled.div`
+border: 1px solid #BEC2C6;
+border-radius: 7px;
+margin: auto; 
+justify-content: flex-start;
+flex-direction: column;
+padding: .77rem;
+width: 400px;
+height: 30px;
+text-align: center;
+margin-top: 10px;
+#fileInput{
+    display: none;
+  }
+  #fileInput + label{
+    /* background-color: blue;
+    padding: 8px;
+    color: #fff;
+    cursor: pointer; */
+  }
+  #fileInput + label:hover{
+    cursor: pointer;
+    
+  }
+  span{
+    font-size:13px ;
+  }
+  background: #fff;
+`;
+
+
+export const Text = styled.small`
+text-align: left;
+
 `;

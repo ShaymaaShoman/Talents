@@ -3,7 +3,7 @@ import NavBar from '../../NavBar/NavBar';
 import Footer from '../../Footer/Footer';
 import EmailVerify from '../../../assest/Email.png'
 import ButtonVerifi from '../Button/ButtonVerifi';
-import axios from 'axios';
+
 import {EmailContainer,Otp, EmailSection,VerfiHeading,Resed1,VerfiPargraf,VerfiParg,VerfiImg,ContainerBox,FormStyle,ResendLink1} from './EmailVerifStyle.js'
 
 import { Link, useNavigate  } from 'react-router-dom';
@@ -16,7 +16,10 @@ const EmailVerif = () => {
   const [err, setErr] = useState(false);
   const [inputs, setInputs] = useState({});
   const useInput=[inputs.otp1,inputs.otp2,inputs.otp3,inputs.otp4,inputs.otp5,inputs.otp6];
- 
+  const userData=localStorage.getItem('user');
+  const testUserData =JSON.parse(userData);
+const email =testUserData.email;
+const  mobileFormate=email.replace(/^(.).*(.@)/, '*********$1$2');
  const handleChange = (val, event) => {
   setInputs({ ...inputs, [val]: event.target.value });
 };
@@ -34,15 +37,7 @@ const inputfocus = (elmnt) => {
   
   }
 };
-  // const OpenBox=(id)=>{
-  //   if(useInput !== ""){
-  //       setErr(true);
-  //       navigate("/emailVerfiChek" );
-  //   }
-// }
-useEffect(()=>{
   
-})
   const handleSubmit = async(e,da)=> {
     e.preventDefault();
     console.log(useInput);
@@ -50,9 +45,9 @@ useEffect(()=>{
        console.log(result);
        if(result !== ""){
         setErr(true);
-        navigate("/emailVerfiChek" );
-       }
-    const USER_API_URL = "https://talents-valley-backend.herokuapp.com/api/user/verify/email";
+        navigate("/EmailVerfiChek" );
+      }
+    const USER_API_URL ="https://talents-valley-backend.herokuapp.com/api/user/verify/email";
     await fetch(USER_API_URL, {
       method: "POST",
       headers: { 
@@ -65,9 +60,8 @@ useEffect(()=>{
       }),
     })
       .then(response => response.json())
-      .then((acualData)=>{
-       navigate("/emailVerfiChek" );
-      }).catch((error) => {
+       navigate("/EmailVerfiChek" )
+      .catch((error) => {
           console.log(error);  
         })
       };
@@ -81,7 +75,7 @@ useEffect(()=>{
  <VerfiHeading > Email Verification</VerfiHeading>
  <VerfiImg src={EmailVerify} alt ="EmailVerif"/>
  <VerfiPargraf>We have sent you a verification code to your email <br/>
- <VerfiParg>******78@gmail.com</VerfiParg></VerfiPargraf>
+ <VerfiParg>{mobileFormate}</VerfiParg></VerfiPargraf>
  <FormStyle onSubmit={handleSubmit}>
  <ContainerBox>
   
@@ -130,6 +124,7 @@ useEffect(()=>{
     onChange={(e) => handleChange("otp4", e)}
     tabIndex="4"
     onKeyUp={(e) => inputfocus(e)}
+  
   />
   <Otp
     type="text"
@@ -141,6 +136,7 @@ useEffect(()=>{
     onChange={(e) => handleChange("otp5", e)}
     tabIndex="5"
     onKeyUp={(e) => inputfocus(e)}
+   
   />
   <Otp
     type="text"
@@ -154,7 +150,7 @@ useEffect(()=>{
     onKeyUp={(e) => inputfocus(e)}
   />
   </ContainerBox>
-  <ButtonVerifi title="Continue"  >Continue</ButtonVerifi>
+  <ButtonVerifi title="Continue" >Continue</ButtonVerifi>
 
 
 <p style={{ color: "red", fontSize: "18px" }}>{error}</p>

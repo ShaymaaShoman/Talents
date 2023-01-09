@@ -24,6 +24,16 @@ font: normal normal 600 25px Segoe UI;
 padding-top: 10px;
 
 `;
+export const FormStyle = styled.form`
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+flex-grow: 1;
+padding-bottom: 1rem;
+margin-top: -10px;
+position: relative;
+
+`;
 export const AddressPargraf= styled.p`
 text-align: left;
 margin-left: 50px;
@@ -54,7 +64,7 @@ margin-bottom: 15px;
 margin-top: -5px;
 display: block;
 text-align: left;
-margin-left: 50px;
+margin-left: 60px;
 `;
 export const InputSelect = styled.select`
 font-family: 'Segoe UI';
@@ -62,19 +72,134 @@ font-family: 'Segoe UI';
   border-radius: 7px;
   border: 1px solid  #BEC2C6;
   margin-top: -5px;
-  margin-bottom: 1px;
-  width: 420px;
+  margin-bottom: -10px;
+  width: 425px;
   height: 50px;
   display: block;
-  margin-left: 50px;
+  margin-left: 60px;
 color:#BEC2C6;
+
+`;
+export  const Option = styled.option`
+color:#BEC2C6;
+`;
+export const DangerStyle = styled.small`
+color :red;
+  font-size: 12px;
+
+`;
+export const FileError= styled.span`
+display: inline-block;
+vertical-align: top;
+margin-left: 50px;
+color: red;
+`;
+
+export const FileBefore = styled.div`
+
+border: 1px solid #BEC2C6;
+border-radius: 7px;
+margin: auto; 
+margin-left: 60px;
+justify-content: flex-start;
+flex-direction: column;
+padding: .77rem;
+width: 395px;
+height: 30px;
+text-align: center;
+margin-top: 10px;
+#fileInput{
+    display: none;
+  }
+  #fileInput + label{
+    /* background-color: blue;
+    padding: 8px;
+    color: #fff;
+    cursor: pointer; */
+  }
+  #fileInput + label:hover{
+    cursor: pointer;
+    
+  }
+  span{
+    font-size:13px ;
+  }
+  background: #fff;
+`;
+
+export const FileContainer = styled.div`
+
+border: 1px solid #BEC2C6;
+border-radius: 7px;
+margin: auto; 
+justify-content: flex-start;
+flex-direction: column;
+padding: .77rem;
+width: 400px;
+height: 30px;
+text-align: center;
+margin-top: 10px;
+#fileInput{
+    display: none;
+  }
+  #fileInput + label{
+    /* background-color: blue;
+    padding: 8px;
+    color: #fff;
+    cursor: pointer; */
+  }
+  #fileInput + label:hover{
+    cursor: pointer;
+    
+  }
+  span{
+    font-size:13px ;
+  }
+  background: #E2E2E2;
+`;
+export const Upload = styled.span`
+font-size: 30px;
+`;
+export const UploadSize = styled.p`
+text-align: left; 
+justify-content: left;
+margin-top:2px;
+font-size: 13px;
+margin-left: 30px;
+`;
+
+
+ export const UploadContain = styled.span`
+ margin-left: -300px;
+background: #E2E2E2;
+ 
+
+ `;
+ export const FileRemove = styled.div`
+ position: absolute;
+ cursor: pointer;
+ color: #000;
+ margin-top:-50px;
+ margin-left:380px;
+`;
+//  
+//  top:230px;
+//  right: 90px;
+// line-height: 15px;
+// 
+// 
+// margin-right: -10px;
+//  cursor: pointer;
+export const Text = styled.small`
+text-align: left;
 
 `;
 export const FulName = styled.div`
 display: flex;
 width: 100%;
-margin-top: 1px;
+margin-top: 10px;
 margin-bottom: -1px;
+margin-left: 10px;
 `;
 export const LabelAddres = styled.label`
 margin-top: 5px;
@@ -108,7 +233,7 @@ margin-left: 50px;
 export const Select = styled.select `
 height: 45px;
 color: #707070;
-width: 190px ;
+width: 185px ;
 border-radius: 5px;
 border: 1px solid  rgb(175, 172, 172);
 margin-left: 50px;
@@ -127,31 +252,12 @@ margin-left: 50px;
 export const FulNameAdress = styled.div`
 display: flex;
 width: 100%;
-margin-top: 1px;
-margin-bottom: 10px;
+margin-top: -3px;
+margin-bottom: 15px;
+margin-left: 10px;
 `;
 export const Space = styled.div`
 
 margin-bottom: 20px;
 `;
-export  const BtnVerf = styled.button`
-display: block;
-margin-left: 50px;
-margin-right: auto;
-background-color:  #4375FF ;
-color: #fff;
-cursor: pointer;
-text-transform: capitalize;
-width: 435px;
-height: 60px;
-border:1px solid #A7BDFB;
-border-radius: 7px;
-font-size: 20px;
-font-weight: bold;
-margin-top: 30px;
-margin-bottom:30px ;
-`;
-export const FormStyle = styled.form`
 
-
-`;

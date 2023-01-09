@@ -9,22 +9,26 @@ const EmailVerfiChek = () => {
   const[state,setState]=useState(false);
   const toggle = async(e,data)=>{
     setState(!state);
-    navigate("/Home" );
+    navigate("/Verification" );
     e.preventDefault();
     console.log(data);
-    const USER_API_URLx = "https://talents-valley-backend.herokuapp.com/api/settings/profile";
+    const USER_API_URLx ="https://talents-valley-backend.herokuapp.com/api/settings/profile";
     await fetch(USER_API_URLx, {
-      method: "Get",
+      method: "GET",
       headers: { 
-       "Content-Type": "application/json",  
+       "Content-Type": "application/json",
+       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,   
       },
       body: JSON.stringify({
-      
+
       }),
     })
        .then(response => response.json())
-        console.log(localStorage.getItem('user'))
-      .catch((error) => {
+       .then((acualData)=>{  
+       localStorage.setItem("user",JSON.stringify(acualData.data.user));
+       console.log(acualData);
+         navigate("/Verification");
+       }).catch((error) => {
            console.log(error); 
        })
   }

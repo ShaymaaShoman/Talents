@@ -1,6 +1,6 @@
 .file-remove  {
    position: absolute;
-     top:230px;
+     top:212px;
      right: 90px;
  line-height: 15px;
    cursor: pointer;
@@ -14,4 +14,14 @@ input:invalid{
   .error {
     border: 1px solid red;
   }
-  
+  #businesstype {
+  color:red
+ }
+ .invalid{
+  border: 1px solid #F50000;
+ 
+}
+.form-control{
+  border: 1px solid #F50000;
+ color: #000000;
+} 

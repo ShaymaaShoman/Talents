@@ -7,7 +7,7 @@ import { AiFillWarning } from "react-icons/ai";
 
 import Footer from "../Footer/Footer";
 import Brand from "../Brand/Brand";
-
+ import {StyleSignup} from "./StyleSignup"
 import {
   LoginContainer,
   LoginSection,
@@ -23,6 +23,7 @@ import {
   ForgetPassword,
   ButtonPargStyle,
 } from "./StyleSignup";
+
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ const SignIn = () => {
     password: "",
   });
   const [err, setErr] = useState(false);
-
+  const userData = localStorage.getItem("user");
   if (data.password !== "" && data.email !== "") {
     setErr(true);
     navigate("/Home");
@@ -51,6 +52,7 @@ const SignIn = () => {
   const [home, setHome] = useState(true);
 useEffect(()=>{
 setErrMsg('')
+
 },[data])
 
 
@@ -89,7 +91,7 @@ setErrMsg('')
 
   return (
     <>
-      <LoginContainer>
+      <StyleSignup.LoginContainer>
       {home ?   ( 
           <LoginSection>
             <Brand />
@@ -176,9 +178,9 @@ setErrMsg('')
             </FormStyle>
           </LoginSection>
      ) : (
-   navigate("/Home")
+    <p>{!userData.role===0?navigate("/Home"):navigate("/UserManagement")}</p>  
    )}
-      </LoginContainer>
+      </StyleSignup.LoginContainer>
 
       <Footer />
     </>

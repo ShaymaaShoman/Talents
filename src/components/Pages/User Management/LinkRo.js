@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { LinkStyle } from "./Style/LinkStyle.js"
-const LinksRout = () => {
+const LinksRo = () => {
   return (
     <LinkStyle>
   
@@ -22,4 +22,4 @@ const LinksRout = () => {
   )
 }
 
-export default LinksRout;
+export default LinksRo;

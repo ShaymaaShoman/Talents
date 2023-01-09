@@ -4,7 +4,7 @@ import React,{useState} from 'react'
 import Brand from '../Brand/Brand';
 import Footer from '../Footer/Footer';
 
-import { Link ,useNavigate,useLocation  } from 'react-router-dom';
+import { Link ,useNavigate ,useParams} from 'react-router-dom';
  import  axios from 'axios';
 
 import { MdArrowBackIosNew} from "react-icons/md";
@@ -13,6 +13,7 @@ import {RecoveryContainer,Recovery1,BackStyle,CheckEmail,Heading,ResendLink1 , P
 
 
 const RecoveryBox = () => {
+  const{_id}=useParams();
   const navigate =useNavigate();
   const [inputs, setInputs] = useState({});
   const[error,setError]=useState("");
@@ -55,7 +56,7 @@ const RecoveryBox = () => {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
           verificationCode:test,
-           _id:IDTest
+           _id:_id
         }
       );
 

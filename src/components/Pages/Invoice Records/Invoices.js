@@ -4,6 +4,7 @@ import NavBar from '../../NavBar/NavBar'
 import InvoiceCreateRecord from './InvoiceCreateRecord'
 import InvoicePreview from './InvoicePreview'
 import CorrectSmall from "../../../assest/CorrectSmall.png"
+import LinkInvoice from './LinkInvoice'
 import {HeadingVoice,HeadingPreview,HeadingInvoice,HeadingCreate,HeadingCreateInvoice,DataPreivew,pargrafeCreate,ImgPreview,PaidGreen,BoxInvoice} from "./InvoiceStyle.js"
 const Invoices = () => {
   return (
@@ -21,15 +22,7 @@ const Invoices = () => {
    </HeadingVoice>
    <HeadingCreateInvoice>
    <HeadingCreate>Create</HeadingCreate>
-   <pargrafeCreate >
-   Invoice Records
-   </pargrafeCreate><br/>
-   <pargrafeCreate>
-   Payout Records
-   </pargrafeCreate><br/>
-   <pargrafeCreate>
-   Add Link
-   </pargrafeCreate><br/>
+  <LinkInvoice/>
    </HeadingCreateInvoice>
    <BoxInvoice>
    <section><InvoiceCreateRecord/></section>
